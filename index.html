@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eritel - Transformação e Tecnologia</title>
+
+    <link rel="icon" type="image/x-icon" href="images/eritel.ico">
+
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- ESTILOS EM CSS PURO -->
+    <style>
+        /* =========================================
+           RESET BÁSICO E CONFIGURAÇÕES GERAIS
+        ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111827;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 18px; 
+        }
+
+        ::selection {
+            background-color: #1f6adb;
+            color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* =========================================
+           SISTEMA DE GRID / CONTAINERS
+        ========================================= */
+        .container {
+            width: 100%;
+            max-width: 1440px; 
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+        }
+
+        /* =========================================
+           CABEÇALHO (HEADER) E NAVEGAÇÃO
+        ========================================= */
+        
+
+        
+
+        /* Usando Grid para posicionar: Logo (esq), Nav (centro), Idioma/Mobile (dir) */
+        
+
+        
+
+        
+
+        
+
+        /* Navegação Desktop com o tamanho original restaurado */
+        
+
+        
+
+        
+
+        
+
+        
+
+        /* Botão de Idioma PT/EN no Extremo Direito */
+        
+
+        
+
+        
+
+        /* Menu Mobile Botão */
+        
+
+        
+
+        
+
+        
+
+        /* Drawer Mobile */
+        
+
+        
+
+        
+
+        
+
+        
+
+        /* =========================================
+           CONTEÚDO PRINCIPAL (MAIN)
+        ========================================= */
+        .main-content {
+            flex-grow: 1;
+        }
+
+        /* Seção Hero */
+        .hero-section {
+            padding: 64px 0 80px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 100px 0 80px;
+            }
+        }
+
+        .hero-inner {
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text-content {
+            max-width: 100%;
+        }
+
+        @media (min-width: 1400px) {
+            .hero-text-content {
+                flex: 0 0 auto;
+            }
+
+            .hero-line {
+                display: block;
+                white-space: nowrap;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .hero-inner {
+                flex-direction: column;
+            }
+        }
+
+        .card {
+            width: 380px;
+            max-width: 100%;
+            height: 300px;
+            border-radius: 30px;
+            padding: 14px;
+            background: linear-gradient(145deg, #ffffff 0%, #eceef2 100%);
+            box-shadow: 0 30px 50px -12px rgba(15, 23, 42, 0.30),
+                        0 10px 20px rgba(15, 23, 42, 0.12),
+                        inset 0 2px 2px #ffffff,
+                        inset 0 -4px 8px rgba(15, 23, 42, 0.12);
+            flex-shrink: 0;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        @media (min-width: 1400px) {
+            .card {
+                flex: 1 1 auto;
+                width: auto;
+                min-width: 240px;
+                max-width: 460px;
+                margin-right: calc(-1 * max(0px, max(0px, (100vw - 1440px) / 2) + 32px - 4vw));
+            }
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background-color: #e5e7eb;
+        }
+
+        .video-frame::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            box-shadow: inset 0 0 0 4px #d9dce1,
+                        inset 0 4px 10px rgba(107, 114, 128, 0.35);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .video-toggle,
+        .video-mute {
+            position: absolute;
+            bottom: 28px;
+            z-index: 3;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: rgba(17, 24, 39, 0.6);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .video-mute {
+            right: 28px;
+        }
+
+        .video-toggle {
+            right: 82px;
+        }
+
+        .card.show-controls .video-toggle,
+        .card.show-controls .video-mute {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .video-toggle:hover,
+        .video-mute:hover {
+            background-color: #1f6adb;
+            transform: scale(1.08);
+        }
+
+        .card.is-idle .video-toggle,
+        .card.is-idle .video-mute {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .card video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-title {
+            font-size: 44px;
+            font-weight: 700;
+            color: #111827;
+            line-height: .93;
+            letter-spacing: -.07em;
+        }
+
+        @media (min-width: 640px) {
+            .hero-title {
+                font-size: 56px; 
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 72px; 
+            }
+        }
+
+        .hero-highlight {
+            color: #1f6adb;
+            font-weight: 700;
+        }
+
+        .hero-subtitle {
+            margin-top: 28px;
+            font-size: 18px;
+            color: #6b7280;
+            font-weight: 400;
+            line-height: 1.8;
+            max-width: 896px;
+        }
+
+        /* =========================================
+           SEÇÃO DE ESTATÍSTICAS
+        ========================================= */
+        .stats-section {
+            background-color: #f8f9fa; 
+            padding: 100px 0;
+            position: relative; 
+            background-image: 
+                linear-gradient(#f5f3f3, #f5f3f3), 
+                linear-gradient(#f5f3f3, #f5f3f3);
+            background-position: top left, bottom right; 
+            background-size: 50% 2px; 
+            background-repeat: no-repeat;
+        }
+
+        .stats-section.animate-line,
+        .stats-section.expanded {
+            background-size: 100% 2px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        @media (max-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .stat-card {
+            width: 200px;
+            height: 200px;
+            background-color: transparent;
+            box-shadow: inset 10px 10px 10px 10px rgba(0, 0, 0, 0.05),
+                        10px 10px 20px rgba(0, 0, 0, 0.15),
+                        inset -10px -10px 10px 10px rgba(255, 255, 255, 0.4);
+            border-radius: 51% 49% 62% 38% / 25% 57% 43% 75%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+        }
+
+.stat-number {
+            font-size: 34px; 
+            font-weight: 700; 
+            color: #1f6adb; /* Alterado para o azul da marca */
+            letter-spacing: -0.025em;
+            white-space: nowrap; 
+            z-index: 2;
+        }
+
+        .stat-label {
+            margin-top: 12px;
+            font-size: 15px; 
+            color: #4b5563; 
+            font-weight: 500;
+            line-height: 1.4;
+            white-space: normal; 
+            z-index: 2;
+        }
+
+        /* =========================================
+           CARROSSEL DE PARCEIROS
+        ========================================= */
+        .carousel-section {
+            border-top: 1px solid #f3f4f6;
+            background-color: #ffffff;
+            padding: 60px 0; 
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-250px * 8)); } 
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            width: 100%;
+            height: 120px; 
+        }
+
+        .slider::before,
+        .slider::after {
+            background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+            content: "";
+            height: 120px;
+            position: absolute;
+            width: 200px;
+            z-index: 2;
+        }
+
+        .slider::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+
+        .slider::before {
+            left: 0;
+            top: 0;
+        }
+
+        .slide-track {
+            animation: scroll 40s linear infinite;
+            display: flex;
+            width: calc(250px * 16);
+        }
+
+        .slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 120px; 
+            width: 250px;
+        }
+
+        .slide img {
+            max-width: 180px; 
+            max-height: 100px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .slide img:hover {
+            opacity: 1;
+        }
+
+        /* =========================================
+           RODAPÉ (FOOTER)
+        ========================================= */
+
+        /* ================================
+           BARRA DE NAVEGAÇÃO PADRÃO (igual em todas as páginas)
+        ================================= */
+        .header {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 4%;
+        }
+
+        .header-inner {
+            height: 100px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .logo-link {
+            justify-self: start;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: 135px;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 48px;
+            }
+        }
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-self: center;
+            gap: 24px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #374151;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 1200px) {
+            .desktop-nav {
+                gap: 28px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: #0052CC;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            border-radius: 3px;
+            background: #0052CC;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-active {
+            color: #0052CC !important;
+        }
+
+        .nav-link.nav-active::after {
+            transform: scaleX(1);
+        }
+
+        .header-actions {
+            display: none;
+            align-items: center;
+            justify-self: end;
+            gap: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .header-actions {
+                display: flex;
+            }
+        }
+
+        .plantao-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .plantao-btn:hover {
+            background: #DB6A0B;
+            transform: translateY(-1px);
+        }
+
+        .lang-toggle-btn {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 0;
+            font-family: inherit;
+        }
+
+        .lang-toggle-btn:hover {
+            background: #0052CC;
+            color: #ffffff;
+        }
+
+        .mobile-menu-btn-container {
+            display: flex;
+            align-items: center;
+            justify-self: end;
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            color: #374151;
+            padding: 8px;
+            font-size: 24px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn:hover {
+            color: #0052CC;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn-container {
+                display: none;
+            }
+        }
+
+        .mobile-drawer {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 8px 16px 24px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-drawer-link {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            color: #374151;
+            border: 0;
+            border-bottom: 1px solid #f9fafb;
+            background: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .mobile-drawer-link:hover {
+            color: #0052CC;
+        }
+
+        .mobile-drawer-link.nav-active {
+            border-bottom: 2px solid #0052CC;
+        }
+
+        .mobile-drawer .mobile-plantao {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            border-radius: 8px;
+            border-bottom: 0;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .mobile-drawer .mobile-plantao:hover {
+            background: #DB6A0B;
+            color: #ffffff;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-drawer-wrapper {
+                display: none;
+            }
+        }
+
+        /* ================================
+           RODAPÉ PADRÃO (igual em todas as páginas)
+        ================================= */
+        .footer {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 48px 0 32px;
+            color: #6b7280;
+        }
+
+        .footer-wrap {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .footer-wrap {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-wrap {
+                padding: 0 32px;
+            }
+        }
+
+        .footer-offices {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            padding-bottom: 32px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .footer-office {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 16px;
+            line-height: 1.5;
+            min-width: 0;
+        }
+
+        .footer-office-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #374151;
+            font-weight: 700;
+        }
+
+        .footer-office-name i {
+            color: #0052CC;
+            font-size: 14px;
+        }
+
+        .footer-office a {
+            color: #6b7280;
+            overflow-wrap: anywhere;
+        }
+
+        .footer-office a:hover {
+            color: #0052CC;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
+
+        .footer-copy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .footer-links a:hover {
+            color: #0052CC;
+        }
+
+        @media (max-width: 900px) {
+            .footer-offices {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-copy {
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO (HEADER) -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <div class="logo-link">
+                <a href="index.html">
+                    <img src="images/eritel.png" alt="Eritel" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link nav-active" data-i18n="home">Home</a>
+                <a href="historia.html" class="nav-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="nav-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="nav-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="nav-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="nav-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="nav-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="nav-link" data-i18n="contato">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="plantao.html" class="plantao-btn"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button class="lang-toggle-btn" id="lang-toggle" type="button">PT / EN</button>
+            </div>
+
+            <div class="mobile-menu-btn-container">
+                <button
+                    class="mobile-menu-btn"
+                    id="mobile-menu-btn"
+                    type="button"
+                    aria-label="Abrir Menu"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-drawer-wrapper">
+            <div class="mobile-drawer" id="mobile-menu" style="display: none;">
+                <a href="index.html" class="mobile-drawer-link nav-active" data-i18n="home">Home</a>
+                <a href="historia.html" class="mobile-drawer-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="mobile-drawer-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="mobile-drawer-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="mobile-drawer-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="mobile-drawer-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="mobile-drawer-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="mobile-drawer-link" data-i18n="contato">Contato</a>
+                <a href="plantao.html" class="mobile-drawer-link mobile-plantao"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button
+                    class="mobile-drawer-link"
+                    id="mobile-lang-toggle"
+                    type="button"
+                >
+                    PT / EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <!-- SEÇÃO HERO -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-inner">
+                    <!-- Textos do Hero -->
+                    <div class="hero-text-content">
+                        <h1 class="hero-title" data-i18n-html="hero_title">
+                            <span class="hero-line">Inovando o <span class="hero-highlight">ecossistema de</span></span>
+                            <span class="hero-line">saúde, <span class="hero-highlight">conectando</span> tecnologia</span>
+                            <span class="hero-line">para salvar vidas.</span>
+                        </h1>
+                        <p class="hero-subtitle" data-i18n="hero_subtitle">
+                            Se tem um desafio para otimizar fluxos hospitalares, transformar a gestão de leitos, transporte de pacientes ou elevar a excelência assistencial, nós temos a experiência tecnológica para apoiar a sua instituição!
+                        </p>
+                    </div>
+
+                    <!-- Cartão (Card) com Vídeo ao Lado -->
+                    <div class="card is-idle" id="hero-card">
+                        <div class="video-frame">
+                            <video id="hero-video" src="videos/eritel.mp4" preload="metadata" loop playsinline></video>
+                        </div>
+                        <button id="video-toggle" class="video-toggle" type="button" aria-label="Reproduzir vídeo">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button id="video-mute" class="video-mute" type="button" aria-label="Silenciar vídeo">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE ESTATÍSTICAS -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    
+                    <div class="stat-card">
+                        <div class="stat-number">+50</div>
+                        <div class="stat-label" data-i18n="stat_1">clientes</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number" data-i18n="num_2">+10.000</div>
+                        <div class="stat-label" data-i18n="stat_2">Dispositivos</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number">10</div>
+                        <div class="stat-label" data-i18n="stat_3">maiores hospitais do Brasil são clientes da ERITEL</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label" data-i18n="stat_4">estados em atuação</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number">+42</div>
+                        <div class="stat-label" data-i18n="stat_5">Hospitais no Brasil</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number" data-i18n="num_6">+25 mi</div>
+                        <div class="stat-label" data-i18n="stat_6">de mensagens enviadas por ano</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label" data-i18n="stat_7">escritórios</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number" data-i18n="num_8">+80.000</div>
+                        <div class="stat-label" data-i18n="stat_8">Transportes por mês</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number" data-i18n="num_9">+50.000</div>
+                        <div class="stat-label" data-i18n="stat_9">Códigos por ano</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-number" data-i18n="num_10">+25 mil</div>
+                        <div class="stat-label" data-i18n="stat_10">Limpezas realizadas por mês</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DO CARROSSEL DE PARCEIROS -->
+        <section class="carousel-section">
+            <div class="container">
+                <div class="slider">
+                    <div class="slide-track">
+                        
+                        <!-- Imagens 1 a 8 -->
+                        <div class="slide"><img src="images/cliente1.jpg" alt="Parceiro 1"></div>
+                        <div class="slide"><img src="images/cliente2.jpg" alt="Parceiro 2"></div>
+                        <div class="slide"><img src="images/cliente3.jpg" alt="Parceiro 3"></div>
+                        <div class="slide"><img src="images/cliente4.jpg" alt="Parceiro 4"></div>
+                        <div class="slide"><img src="images/cliente5.jpg" alt="Parceiro 5"></div>
+                        <div class="slide"><img src="images/cliente10.jpg" alt="Parceiro 6"></div>
+                        <div class="slide"><img src="images/cliente7.jpg" alt="Parceiro 7"></div>
+                        <div class="slide"><img src="images/cliente8.jpg" alt="Parceiro 8"></div>
+
+                        <!-- Repetição (Loop Infinito) -->
+                        <div class="slide"><img src="images/cliente1.jpg" alt="Parceiro 1"></div>
+                        <div class="slide"><img src="images/cliente2.jpg" alt="Parceiro 2"></div>
+                        <div class="slide"><img src="images/cliente3.jpg" alt="Parceiro 3"></div>
+                        <div class="slide"><img src="images/cliente4.jpg" alt="Parceiro 4"></div>
+                        <div class="slide"><img src="images/cliente5.jpg" alt="Parceiro 5"></div>
+                        <div class="slide"><img src="images/cliente10.jpg" alt="Parceiro 6"></div>
+                        <div class="slide"><img src="images/cliente7.jpg" alt="Parceiro 7"></div>
+                        <div class="slide"><img src="images/cliente8.jpg" alt="Parceiro 8"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- RODAPÉ (FOOTER) -->
+    <footer class="footer">
+        <div class="footer-wrap">
+            <div class="footer-offices">
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> São Paulo</div>
+                    <a href="tel:+551123481381">(11) 2348-1381</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Rio de Janeiro</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="mailto:rio@eritel.com.br">rio@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Porto Alegre (RS, SC, PR)</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="tel:+555133628506">(51) 3362-8506</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    <span>
+                        © <span id="current-year">2026</span> Eritel.
+                        <span data-i18n="rights">Todos os direitos reservados.</span>
+                    </span>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#" data-i18n="termos">Termos de Uso</a>
+                    <a href="#" data-i18n="privacidade">Política de Privacidade</a>
+                    <a href="#" data-i18n="compliance">Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Dicionário de Traduções
+        const translations = {
+            'pt': {
+                'home': 'Home',
+                'empresa': 'Empresa',
+                'solucoes': 'Soluções',
+                'transporte_pacientes': 'Transporte de Pacientes',
+                'telecare': 'TeleCARE',
+                'giro_sala': 'Giro de Sala',
+                'produtos': 'Produtos',
+                'servicos': 'Serviços',
+                'clientes': 'Clientes',
+                'blog': 'Blog',
+                'contato': 'Contato', 'plantao': 'Plantão',
+                'hero_title': '<span class="hero-line">Inovando o <span class="hero-highlight">ecossistema de</span></span> <span class="hero-line">saúde, <span class="hero-highlight">conectando</span> tecnologia</span> <span class="hero-line">para salvar vidas.</span>',
+                'hero_subtitle': 'Se tem um desafio para otimizar fluxos hospitalares, transformar a gestão de leitos, transporte de pacientes ou elevar a excelência assistencial, nós temos a experiência tecnológica para apoiar a sua instituição!',
+                'stat_1': 'clientes',
+                'stat_2': 'Dispositivos',
+                'stat_3': 'maiores hospitais do Brasil são clientes da ERITEL',
+                'stat_4': 'estados em atuação',
+                'stat_5': 'Hospitais no Brasil',
+                'num_2': '+10.000',
+                'num_6': '+25 mi',
+                'num_8': '+80.000',
+                'num_9': '+50.000',
+                'num_10': '+25 mil',
+                'stat_6': 'de mensagens enviadas por ano',
+                'stat_7': 'escritórios',
+                'stat_8': 'Transportes por mês',
+                'stat_9': 'Códigos por ano',
+                'stat_10': 'Limpezas realizadas por mês',
+                'footer_copy': '© 2026 Eritel. Todos os direitos reservados.',
+                'termos': 'Termos de Uso',
+                'privacidade': 'Política de Privacidade',
+                'rights': 'Todos os direitos reservados.',
+                'compliance': 'Compliance'
+                
+            },
+            'en': {
+                'home': 'Home',
+                'empresa': 'Company',
+                'solucoes': 'Solutions',
+                'transporte_pacientes': 'Patient Transport',
+                'telecare': 'TeleCARE',
+                'giro_sala': 'Room Turnover',
+                'produtos': 'Products',
+                'servicos': 'Services',
+                'clientes': 'Clients',
+                'blog': 'Blog',
+                'contato': 'Contact', 'plantao': 'On-call',
+                'hero_title': '<span class="hero-line">Innovating the <span class="hero-highlight">ecosystem of</span></span> <span class="hero-line">health, <span class="hero-highlight">connecting</span> technology</span> <span class="hero-line">to save lives.</span>',
+                'hero_subtitle': 'If you have a challenge to optimize hospital flows, transform bed management, patient transport, or elevate care excellence, we have the technological expertise to support your institution!',
+                'stat_1': 'clients',
+                'stat_2': 'Devices',
+                'stat_3': 'largest hospitals in Brazil are ERITEL clients',
+                'stat_4': 'states of operation',
+                'stat_5': 'Hospitals in Brazil',
+                'num_2': '+10,000',
+                'num_6': '+25M',
+                'num_8': '+80,000',
+                'num_9': '+50,000',
+                'num_10': '+25K',
+                'stat_6': 'Messages sent per year',
+                'stat_7': 'offices',
+                'stat_8': 'Transports per month',
+                'stat_9': 'Codes per year',
+                'stat_10': 'Cleanings performed per month',
+                'footer_copy': '© 2026 Eritel. All rights reserved.',
+                'termos': 'Terms of Use',
+                'privacidade': 'Privacy Policy',
+                'rights': 'All rights reserved.',
+                'compliance': 'Compliance'
+                
+            }
+        };
+
+        
+
+        let currentLang = 'pt';
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+
+        function updateLanguage() {
+            const dict = translations[currentLang];
+
+            // Elementos de texto simples
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key] !== undefined) {
+                    el.textContent = dict[key];
+                }
+            });
+
+            // Elementos com HTML interno
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const key = el.getAttribute('data-i18n-html');
+                if (dict[key] !== undefined) {
+                    el.innerHTML = dict[key];
+                }
+            });
+
+            const label = currentLang === 'pt' ? 'PT / EN' : 'EN / PT';
+            langToggleBtn.textContent = label;
+            mobileLangToggle.textContent = label;
+            document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            updateLanguage();
+            try { localStorage.setItem('eritel-lang', currentLang); } catch (err) {}
+        }
+
+        langToggleBtn.addEventListener('click', toggleLanguage);
+        mobileLangToggle.addEventListener('click', toggleLanguage);
+
+        // Mantém o idioma escolhido ao navegar entre as páginas
+        try {
+            if (localStorage.getItem('eritel-lang') === 'en') {
+                currentLang = 'en';
+                updateLanguage();
+            }
+        } catch (err) {}
+
+        // Menu Mobile
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'flex';
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+
+        // Expande as linhas para 100% ao descer a tela e visualizar a seção
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('expanded');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(document.querySelector('.stats-section'));
+
+        // Play / pause / mute do vídeo do hero
+        (function () {
+            var card = document.getElementById('hero-card');
+            var video = document.getElementById('hero-video');
+            var btnPlay = document.getElementById('video-toggle');
+            var btnMute = document.getElementById('video-mute');
+            var iconPlay = btnPlay.querySelector('i');
+            var iconMute = btnMute.querySelector('i');
+
+            video.muted = false;
+            video.volume = 1;
+
+            var CAPA = 4;
+
+            function irParaCapa() {
+                if (!card.classList.contains('is-idle')) {
+                    return;
+                }
+                try {
+                    video.currentTime = CAPA;
+                } catch (e) {}
+            }
+
+            if (video.readyState >= 1) {
+                irParaCapa();
+            } else {
+                video.addEventListener('loadedmetadata', irParaCapa, { once: true });
+            }
+
+            function atualizarPlay() {
+                if (video.paused) {
+                    iconPlay.className = 'fa-solid fa-play';
+                    btnPlay.setAttribute('aria-label', 'Reproduzir vídeo');
+                } else {
+                    iconPlay.className = 'fa-solid fa-pause';
+                    btnPlay.setAttribute('aria-label', 'Pausar vídeo');
+                }
+            }
+
+            function atualizarMute() {
+                if (video.muted || video.volume === 0) {
+                    iconMute.className = 'fa-solid fa-volume-xmark';
+                    btnMute.setAttribute('aria-label', 'Ativar som');
+                } else {
+                    iconMute.className = 'fa-solid fa-volume-high';
+                    btnMute.setAttribute('aria-label', 'Silenciar vídeo');
+                }
+            }
+
+            var temporizador = null;
+
+            function esconder() {
+                card.classList.remove('show-controls');
+            }
+
+            function mostrar() {
+                card.classList.add('show-controls');
+                clearTimeout(temporizador);
+                if (!card.classList.contains('is-idle')) {
+                    temporizador = setTimeout(esconder, 2000);
+                }
+            }
+
+            card.addEventListener('click', function () {
+                var primeiroClique = card.classList.contains('is-idle');
+                card.classList.remove('is-idle');
+                mostrar();
+
+                if (primeiroClique) {
+                    video.currentTime = 0;
+                }
+
+                if (video.paused) {
+                    var promessa = video.play();
+                    if (promessa && promessa.catch) {
+                        promessa.catch(function () {});
+                    }
+                } else {
+                    video.pause();
+                }
+            });
+
+            btnMute.addEventListener('click', function (e) {
+                e.stopPropagation();
+                video.muted = !video.muted;
+            });
+
+            video.addEventListener('play', atualizarPlay);
+            video.addEventListener('pause', atualizarPlay);
+            video.addEventListener('volumechange', atualizarMute);
+            atualizarPlay();
+            atualizarMute();
+
+            card.addEventListener('pointerenter', mostrar);
+            card.addEventListener('pointermove', mostrar);
+            card.addEventListener('pointerdown', mostrar);
+
+            card.addEventListener('pointerleave', function (e) {
+                if (e.pointerType === 'mouse') {
+                    clearTimeout(temporizador);
+                    esconder();
+                }
+            });
+
+            card.addEventListener('focusin', function (e) {
+                if (e.target.matches(':focus-visible')) {
+                    mostrar();
+                }
+            });
+        })();
+        // Atualiza o ano do rodapé dinamicamente
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+    
+</body>
+</html>

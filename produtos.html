@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eritel - Produtos</title>
+    <link rel="icon" type="image/x-icon" href="images/eritel.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            font-family:'Inter',sans-serif;
+            background:#fff;
+            color:#111827;
+            min-height:100vh;
+            font-size:18px;
+            overflow-x:hidden;
+        }
+        a{text-decoration:none;color:inherit;transition:color .3s ease}
+        button{background:none;border:none;cursor:pointer;font-family:inherit}
+        img{max-width:100%}
+        .container{width:100%;max-width:1440px;margin:0 auto;padding:0 16px}
+        @media(min-width:640px){.container{padding:0 24px}}
+        @media(min-width:1024px){.container{padding:0 32px}}
+
+        /* =========================
+           NAVEGAÇÃO
+        ========================= */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        /* =========================
+           REVELAÇÃO LENTA
+        ========================= */
+        .reveal,
+        .reveal-left,
+        .reveal-right{
+            opacity:0;
+            transition:opacity 1.25s ease,transform 1.25s cubic-bezier(.2,.7,.2,1);
+            will-change:opacity,transform;
+        }
+        .reveal{transform:translateY(45px)}
+        .reveal-left{transform:translateX(-70px)}
+        .reveal-right{transform:translateX(70px)}
+        .reveal.is-visible,
+        .reveal-left.is-visible,
+        .reveal-right.is-visible{
+            opacity:1;
+            transform:translate(0,0);
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+        .products-hero{
+            position:relative;
+            min-height:690px;
+            display:flex;
+            align-items:center;
+            overflow:hidden;
+            background:
+                radial-gradient(circle at 82% 18%,rgba(227,6,19,.12),transparent 28%),
+                linear-gradient(135deg,#fff 0%,#f8fafc 60%,#fff 100%);
+        }
+        .hero-grid{
+            width:min(1240px,90%);
+            margin:0 auto;
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:50px;
+            align-items:center;
+            position:relative;
+            z-index:2;
+        }
+        .hero-kicker{
+            color:#E30613;
+            font-size:12px;
+            font-weight:800;
+            letter-spacing:.18em;
+            text-transform:uppercase;
+            margin-bottom:18px;
+        }
+        .hero-title{
+            font-size:clamp(48px,6vw,82px);
+            line-height:.93;
+            letter-spacing:-.07em;
+            font-weight:700;
+            color:#111827;
+        }
+        .hero-title span{color:#E30613}
+        .hero-text{
+            max-width:650px;
+            margin-top:28px;
+            color:#5b6472;
+            line-height:1.8;
+            font-size:18px;
+        }
+        .hero-button{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            margin-top:34px;
+            padding:14px 22px;
+            border-radius:8px;
+            background:linear-gradient(135deg,#E30613,#E30613 55%,#E30613);
+            color:#fff;
+            font-size:14px;
+            font-weight:700;
+            box-shadow:0 14px 30px rgba(227,6,19,.16);
+            transition:transform .25s ease,box-shadow .25s ease;
+        }
+        .hero-button:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(227,6,19,.22)}
+
+        .hero-visual{
+            position:relative;
+            height:570px;
+            width:100%;
+        }
+        .hero-image-a,
+        .hero-image-b{
+            position:absolute;
+            overflow:hidden;
+            background:transparent;
+        }
+        .hero-image-a{
+            width:64%;
+            height:410px;
+            right:2%;
+            top:5%;
+            transform:rotate(5deg) translateY(25px);
+            z-index:2;
+            transition:opacity 1.4s ease,transform 1.4s cubic-bezier(.2,.7,.2,1);
+        }
+        .hero-image-b{
+            width:56%;
+            height:360px;
+            left:0;
+            bottom:2%;
+            transform:rotate(-6deg) translateY(40px);
+            z-index:3;
+            transition:opacity 1.6s ease .12s,transform 1.6s cubic-bezier(.2,.7,.2,1) .12s;
+        }
+        .hero-image-a img,
+        .hero-image-b img{
+            width:100%;
+            height:100%;
+            object-fit:contain;
+            display:block;
+        }
+        .hero-visual.is-visible .hero-image-a{opacity:1;transform:rotate(5deg) translateY(0)}
+        .hero-visual.is-visible .hero-image-b{opacity:1;transform:rotate(-6deg) translateY(0)}
+        .hero-image-a,
+        .hero-image-b{opacity:0}
+
+        .hero-orb{
+            position:absolute;
+            width:270px;
+            height:270px;
+            right:-120px;
+            top:100px;
+            border-radius:50% 45% 60% 40%;
+            background:linear-gradient(135deg,#E30613,#E30613);
+            opacity:.7;
+            filter:blur(1px);
+            z-index:-1;
+        }
+        .hero-orb-two{
+            position:absolute;
+            width:190px;
+            height:190px;
+            left:-80px;
+            bottom:20px;
+            border-radius:42% 58% 48% 52%;
+            background:#E30613;
+            opacity:.13;
+            z-index:-1;
+        }
+        @media(max-width:900px){
+            .products-hero{padding:75px 0 60px;min-height:auto}
+            .hero-grid{grid-template-columns:1fr;gap:30px}
+            .hero-visual{height:500px;max-width:650px;margin:0 auto}
+        }
+        @media(max-width:600px){
+            .products-hero{padding:55px 0 45px}
+            .hero-title{font-size:44px}
+            .hero-text{font-size:16px;line-height:1.7}
+            .hero-visual{height:390px}
+            .hero-image-a{height:290px;width:70%;right:0}
+            .hero-image-b{height:250px;width:63%;left:0}
+        }
+
+        /* =========================
+           PRODUTOS
+        ========================= */
+        .products-section{
+            position:relative;
+            padding:150px 0;
+            background:#fff;
+            overflow:hidden;
+        }
+        .product-block{
+            width:min(1240px,90%);
+            margin:0 auto 170px;
+            display:grid;
+            grid-template-columns:.95fr 1.05fr;
+            gap:100px;
+            align-items:center;
+            position:relative;
+        }
+        .product-block:last-child{margin-bottom:0}
+        .product-block.reverse{grid-template-columns:1.05fr .95fr}
+        .product-copy{position:relative;z-index:2}
+        .product-number{
+            display:inline-block;
+            color:#E30613;
+            font-size:12px;
+            font-weight:800;
+            letter-spacing:.18em;
+            text-transform:uppercase;
+            margin-bottom:16px;
+        }
+        .product-title{
+            font-size:clamp(38px,5vw,66px);
+            line-height:.93;
+            letter-spacing:-.07em;
+            font-weight:700;
+            color:#111827;
+        }
+        .product-title span{color:#E30613}
+        .product-description{
+            margin-top:28px;
+            color:#5b6472;
+            line-height:1.85;
+            font-size:18px;
+            max-width:650px;
+        }
+        .product-link{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            margin-top:30px;
+            color:#E30613;
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:.03em;
+            transition:gap .25s ease,color .25s ease;
+        }
+        .product-link:hover{gap:15px;color:#E30613}
+
+        .product-visual{
+            position:relative;
+            min-height:610px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .product-frame{
+            position:relative;
+            width:88%;
+            height:520px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            z-index:2;
+        }
+        .product-frame::before{
+            content:"";
+            position:absolute;
+            inset:5% -5% 5% 5%;
+            border:1px solid rgba(227,6,19,.13);
+            border-radius:38px;
+            transform:rotate(-4deg);
+            z-index:-1;
+        }
+        .product-frame::after{
+            content:"";
+            position:absolute;
+            width:220px;
+            height:220px;
+            right:-80px;
+            bottom:-65px;
+            border-radius:50%;
+            background:#E30613;
+            opacity:.16;
+            z-index:-2;
+        }
+        .product-frame img{
+            width:100%;
+            height:100%;
+            object-fit:contain;
+            display:block;
+            filter:drop-shadow(0 24px 28px rgba(15,23,42,.13));
+            transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .8s ease;
+        }
+        .product-visual:hover .product-frame img{transform:scale(1.025) translateY(-5px);filter:drop-shadow(0 30px 34px rgba(15,23,42,.16))}
+
+        .product-block.reverse .product-visual{order:1}
+        .product-block.reverse .product-copy{order:2}
+        .product-block.reverse .product-frame::before{transform:rotate(4deg);inset:5% 5% 5% -5%}
+        .product-block.reverse .product-frame::after{left:-80px;right:auto;background:#E30613}
+
+        .section-glow{
+            position:absolute;
+            width:440px;
+            height:440px;
+            border-radius:50%;
+            filter:blur(2px);
+            opacity:.08;
+            pointer-events:none;
+        }
+        .glow-one{left:-280px;top:70px;background:#E30613}
+        .glow-two{right:-270px;top:720px;background:#E30613}
+
+        @media(max-width:900px){
+            .products-section{padding:100px 0}
+            .product-block,
+            .product-block.reverse{
+                grid-template-columns:1fr;
+                gap:55px;
+                margin-bottom:120px;
+            }
+            .product-block.reverse .product-visual,
+            .product-block.reverse .product-copy{order:initial}
+            .product-visual{min-height:500px}
+            .product-frame{height:460px;width:90%}
+        }
+        @media(max-width:600px){
+            .products-section{padding:75px 0}
+            .product-block,.product-block.reverse{width:90%;gap:35px;margin-bottom:90px}
+            .product-title{font-size:40px}
+            .product-description{font-size:16px;line-height:1.75}
+            .product-visual{min-height:370px}
+            .product-frame{height:340px;width:100%}
+            .product-frame::before{border-radius:25px}
+            .product-frame::after{width:150px;height:150px;right:-35px;bottom:-30px}
+            .product-block.reverse .product-frame::after{left:-35px}
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+        .products-cta{
+            width:min(1100px,90%);
+            margin:0 auto 130px;
+            padding:65px 70px;
+            border-radius:28px;
+            background:linear-gradient(135deg,#E30613 0%,#E30613 55%,#E30613 100%);
+            color:#fff;
+            position:relative;
+            overflow:hidden;
+        }
+        .products-cta::after{
+            content:"";
+            position:absolute;
+            width:320px;
+            height:320px;
+            right:-100px;
+            top:-150px;
+            border-radius:50%;
+            background:rgba(255,255,255,.12);
+        }
+        .products-cta h2{
+            position:relative;
+            z-index:2;
+            font-size:clamp(34px,4vw,54px);
+            line-height:1;
+            letter-spacing:-.05em;
+            font-weight:700;
+            max-width:700px;
+        }
+        .products-cta p{
+            position:relative;
+            z-index:2;
+            margin-top:18px;
+            max-width:680px;
+            line-height:1.7;
+            color:rgba(255,255,255,.9);
+            font-size:17px;
+        }
+        .cta-button{
+            position:relative;
+            z-index:2;
+            display:inline-flex;
+            align-items:center;
+            gap:9px;
+            margin-top:28px;
+            padding:13px 21px;
+            border-radius:8px;
+            background:#fff;
+            color:#E30613;
+            font-size:14px;
+            font-weight:700;
+            transition:transform .25s ease,background .25s ease;
+        }
+        .cta-button:hover{transform:translateY(-3px);background:#f8fafc}
+        @media(max-width:600px){
+            .products-cta{padding:45px 28px;margin-bottom:80px}
+            .products-cta p{font-size:16px}
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        /* ================================
+           BARRA DE NAVEGAÇÃO PADRÃO (igual em todas as páginas)
+        ================================= */
+        .header {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 4%;
+        }
+
+        .header-inner {
+            height: 100px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .logo-link {
+            justify-self: start;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: 135px;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 48px;
+            }
+        }
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-self: center;
+            gap: 24px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #374151;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 1200px) {
+            .desktop-nav {
+                gap: 28px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: #0052CC;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            border-radius: 3px;
+            background: #0052CC;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-active {
+            color: #0052CC !important;
+        }
+
+        .nav-link.nav-active::after {
+            transform: scaleX(1);
+        }
+
+        .header-actions {
+            display: none;
+            align-items: center;
+            justify-self: end;
+            gap: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .header-actions {
+                display: flex;
+            }
+        }
+
+        .plantao-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .plantao-btn:hover {
+            background: #DB6A0B;
+            transform: translateY(-1px);
+        }
+
+        .lang-toggle-btn {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 0;
+            font-family: inherit;
+        }
+
+        .lang-toggle-btn:hover {
+            background: #0052CC;
+            color: #ffffff;
+        }
+
+        .mobile-menu-btn-container {
+            display: flex;
+            align-items: center;
+            justify-self: end;
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            color: #374151;
+            padding: 8px;
+            font-size: 24px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn:hover {
+            color: #0052CC;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn-container {
+                display: none;
+            }
+        }
+
+        .mobile-drawer {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 8px 16px 24px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-drawer-link {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            color: #374151;
+            border: 0;
+            border-bottom: 1px solid #f9fafb;
+            background: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .mobile-drawer-link:hover {
+            color: #0052CC;
+        }
+
+        .mobile-drawer-link.nav-active {
+            border-bottom: 2px solid #0052CC;
+        }
+
+        .mobile-drawer .mobile-plantao {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            border-radius: 8px;
+            border-bottom: 0;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .mobile-drawer .mobile-plantao:hover {
+            background: #DB6A0B;
+            color: #ffffff;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-drawer-wrapper {
+                display: none;
+            }
+        }
+
+        /* ================================
+           RODAPÉ PADRÃO (igual em todas as páginas)
+        ================================= */
+        .footer {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 48px 0 32px;
+            color: #6b7280;
+        }
+
+        .footer-wrap {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .footer-wrap {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-wrap {
+                padding: 0 32px;
+            }
+        }
+
+        .footer-offices {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            padding-bottom: 32px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .footer-office {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 16px;
+            line-height: 1.5;
+            min-width: 0;
+        }
+
+        .footer-office-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #374151;
+            font-weight: 700;
+        }
+
+        .footer-office-name i {
+            color: #0052CC;
+            font-size: 14px;
+        }
+
+        .footer-office a {
+            color: #6b7280;
+            overflow-wrap: anywhere;
+        }
+
+        .footer-office a:hover {
+            color: #0052CC;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
+
+        .footer-copy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .footer-links a:hover {
+            color: #0052CC;
+        }
+
+        @media (max-width: 900px) {
+            .footer-offices {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-copy {
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVEGAÇÃO -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <div class="logo-link">
+                <a href="index.html">
+                    <img src="images/eritel.png" alt="Eritel" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="nav-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="nav-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="nav-link nav-active" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="nav-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="nav-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="nav-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="nav-link" data-i18n="contato">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="plantao.html" class="plantao-btn"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button class="lang-toggle-btn" id="lang-toggle" type="button">PT / EN</button>
+            </div>
+
+            <div class="mobile-menu-btn-container">
+                <button
+                    class="mobile-menu-btn"
+                    id="mobile-menu-btn"
+                    type="button"
+                    aria-label="Abrir Menu"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-drawer-wrapper">
+            <div class="mobile-drawer" id="mobile-menu" style="display: none;">
+                <a href="index.html" class="mobile-drawer-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="mobile-drawer-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="mobile-drawer-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="mobile-drawer-link nav-active" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="mobile-drawer-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="mobile-drawer-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="mobile-drawer-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="mobile-drawer-link" data-i18n="contato">Contato</a>
+                <a href="plantao.html" class="mobile-drawer-link mobile-plantao"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button
+                    class="mobile-drawer-link"
+                    id="mobile-lang-toggle"
+                    type="button"
+                >
+                    PT / EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="products-hero">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <div class="hero-kicker reveal" data-i18n="hero_kicker">Produtos Eritel</div>
+                    <h1 class="hero-title reveal" data-i18n-html="hero_title">
+                        Comunicação crítica para uma operação <span>mais segura.</span>
+                    </h1>
+                    <p class="hero-text reveal" data-i18n="hero_text">
+                        Tecnologias de comunicação desenvolvidas para ambientes onde confiabilidade,
+                        mobilidade e rapidez são essenciais para o atendimento e para a continuidade da operação.
+                    </p>
+                    <a href="#telecare" class="hero-button reveal" data-i18n-html="hero_button">
+                        Conheça os produtos <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                </div>
+
+                <div class="hero-visual" id="hero-visual">
+                    <div class="hero-orb"></div>
+                    <div class="hero-orb-two"></div>
+                    <div class="hero-image-a">
+                        <img src="images/produtos2.png" alt="Tecnologia Eritel">
+                    </div>
+                    <div class="hero-image-b">
+                        <img src="images/produtos1.png" alt="Comunicação Eritel">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUTOS -->
+        <section class="products-section" id="produtos">
+            <div class="section-glow glow-one"></div>
+            <div class="section-glow glow-two"></div>
+
+            <!-- TELECARE -->
+            <article class="product-block" id="telecare">
+                <div class="product-copy">
+                    <div class="product-number reveal" data-i18n="product1_number">01 / TeleCARE IP</div>
+                    <h2 class="product-title reveal" data-i18n-html="product1_title">
+                        Sistema de Chamada de Enfermagem <span>teleCARE IP.</span>
+                    </h2>
+                    <p class="product-description reveal" data-i18n="product1_text">
+                        O sistema de Chamada de Enfermagem mais durável e confiável do mercado utilizando tecnologia
+                        de última geração para comunicação paciente-enfermeira.
+                    </p>
+                    <a class="product-link reveal" href="https://www.eritel.com.br/produtos/sistema-de-chamada-de-enfermagem-telecare-ip" target="_blank" rel="noopener" data-i18n-html="product1_link">
+                        Conheça o teleCARE IP <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="product-visual reveal-right">
+                    <div class="product-frame">
+                        <img src="images/produtos3.png" alt="Sistema de Chamada de Enfermagem teleCARE IP">
+                    </div>
+                </div>
+            </article>
+
+            <!-- IP-DECT -->
+            <article class="product-block reverse" id="ip-dect">
+                <div class="product-copy">
+                    <div class="product-number reveal" data-i18n="product2_number">02 / IP-DECT</div>
+                    <h2 class="product-title reveal" data-i18n-html="product2_title">
+                        Sistema de Terminais Móveis <span>IP-DECT.</span>
+                    </h2>
+                    <p class="product-description reveal" data-i18n="product2_text">
+                        Sistema de comunicação wireless empresarial, com excelência em qualidade de voz e integração
+                        com equipamentos.
+                    </p>
+                    <a class="product-link reveal" href="https://www.eritel.com.br/produtos/sistema-de-terminais-moveis-ip-dect" target="_blank" rel="noopener" data-i18n-html="product2_link">
+                        Conheça o sistema IP-DECT <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="product-visual reveal-left">
+                    <div class="product-frame">
+                        <img src="images/produtos4.png" alt="Sistema de Terminais Móveis IP-DECT">
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- CTA -->
+        <section class="products-cta reveal" id="contato">
+            <h2 data-i18n="cta_title">Tecnologia preparada para operações de missão crítica.</h2>
+            <p data-i18n="cta_text">
+                Fale com a Eritel para conhecer as tecnologias de comunicação e integração mais adequadas à sua operação.
+            </p>
+            <a class="cta-button" href="contato.html" data-i18n-html="cta_button">
+                Fale com a Eritel <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </section>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="footer-wrap">
+            <div class="footer-offices">
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> São Paulo</div>
+                    <a href="tel:+551123481381">(11) 2348-1381</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Rio de Janeiro</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="mailto:rio@eritel.com.br">rio@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Porto Alegre (RS, SC, PR)</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="tel:+555133628506">(51) 3362-8506</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    <span>
+                        © <span id="current-year">2026</span> Eritel.
+                        <span data-i18n="rights">Todos os direitos reservados.</span>
+                    </span>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#" data-i18n="termos">Termos de Uso</a>
+                    <a href="#" data-i18n="privacidade">Política de Privacidade</a>
+                    <a href="#" data-i18n="compliance">Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                home:'Home',
+                empresa:'Empresa',
+                solucoes:'Soluções',
+                produtos:'Produtos',
+                servicos:'Serviços',
+                clientes:'Clientes',
+                blog:'Blog',
+                contato:'Contato', plantao: 'Plantão',
+                language_button:'PT / EN',
+
+                hero_kicker:'Produtos Eritel',
+                hero_title:'Comunicação crítica para uma operação <span>mais segura.</span>',
+                hero_text:'Tecnologias de comunicação desenvolvidas para ambientes onde confiabilidade, mobilidade e rapidez são essenciais para o atendimento e para a continuidade da operação.',
+                hero_button:'Conheça os produtos <i class="fa-solid fa-arrow-down"></i>',
+
+                product1_number:'01 / TeleCARE IP',
+                product1_title:'Sistema de Chamada de Enfermagem <span>teleCARE IP.</span>',
+                product1_text:'O sistema de Chamada de Enfermagem mais durável e confiável do mercado utilizando tecnologia de última geração para comunicação paciente-enfermeira.',
+                product1_link:'Conheça o teleCARE IP <i class="fa-solid fa-arrow-right"></i>',
+
+                product2_number:'02 / IP-DECT',
+                product2_title:'Sistema de Terminais Móveis <span>IP-DECT.</span>',
+                product2_text:'Sistema de comunicação wireless empresarial, com excelência em qualidade de voz e integração com equipamentos.',
+                product2_link:'Conheça o sistema IP-DECT <i class="fa-solid fa-arrow-right"></i>',
+
+                cta_title:'Tecnologia preparada para operações de missão crítica.',
+                cta_text:'Fale com a Eritel para conhecer as tecnologias de comunicação e integração mais adequadas à sua operação.',
+                cta_button:'Fale com a Eritel <i class="fa-solid fa-arrow-right"></i>',
+
+                termos:'Termos de Uso',
+                privacidade:'Política de Privacidade',
+                rights:'Todos os direitos reservados.',
+                compliance:'Compliance'
+            },
+            en: {
+                home:'Home',
+                empresa:'Company',
+                solucoes:'Solutions',
+                produtos:'Products',
+                servicos:'Services',
+                clientes:'Clients',
+                blog:'Blog',
+                contato:'Contact', plantao: 'On-call',
+                language_button:'EN / PT',
+
+                hero_kicker:'Eritel Products',
+                hero_title:'Critical communication for a <span>safer operation.</span>',
+                hero_text:'Communication technologies designed for environments where reliability, mobility and speed are essential for care delivery and operational continuity.',
+                hero_button:'Explore the products <i class="fa-solid fa-arrow-down"></i>',
+
+                product1_number:'01 / TeleCARE IP',
+                product1_title:'Nurse Call System <span>teleCARE IP.</span>',
+                product1_text:'A highly durable and reliable Nurse Call System using state-of-the-art technology for patient-to-nurse communication.',
+                product1_link:'Discover teleCARE IP <i class="fa-solid fa-arrow-right"></i>',
+
+                product2_number:'02 / IP-DECT',
+                product2_title:'Mobile Terminal System <span>IP-DECT.</span>',
+                product2_text:'Enterprise wireless communication system with excellent voice quality and integration with equipment.',
+                product2_link:'Discover the IP-DECT system <i class="fa-solid fa-arrow-right"></i>',
+
+                cta_title:'Technology prepared for mission-critical operations.',
+                cta_text:'Talk to Eritel to discover the communication and integration technologies best suited to your operation.',
+                cta_button:'Talk to Eritel <i class="fa-solid fa-arrow-right"></i>',
+
+                termos:'Terms of Use',
+                privacidade:'Privacy Policy',
+                rights:'All rights reserved.',
+                compliance:'Compliance'
+            }
+        };
+
+        let currentLang='pt';
+        const langToggle=document.getElementById('lang-toggle');
+        const mobileLangToggle=document.getElementById('mobile-lang-toggle');
+
+        function updateLanguage(){
+            const dict=translations[currentLang];
+
+            document.querySelectorAll('[data-i18n]').forEach(el=>{
+                const key=el.getAttribute('data-i18n');
+                if(dict[key]!==undefined) el.textContent=dict[key];
+            });
+
+            document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+                const key=el.getAttribute('data-i18n-html');
+                if(dict[key]!==undefined) el.innerHTML=dict[key];
+            });
+
+            langToggle.textContent=currentLang==='pt'?'PT / EN':'EN / PT';
+            mobileLangToggle.textContent=currentLang==='pt'?'PT / EN':'EN / PT';
+            document.documentElement.lang=currentLang==='pt'?'pt-BR':'en';
+        }
+
+        function toggleLanguage(){
+            currentLang=currentLang==='pt'?'en':'pt';
+            updateLanguage();
+            try{localStorage.setItem('eritel-lang',currentLang)}catch(err){}
+        }
+
+        langToggle.addEventListener('click',toggleLanguage);
+        mobileLangToggle.addEventListener('click',toggleLanguage);
+
+        try{
+            if(localStorage.getItem('eritel-lang')==='en'){
+                currentLang='en';
+                updateLanguage();
+            }
+        }catch(err){}
+
+        const mobileBtn=document.getElementById('mobile-menu-btn');
+        const mobileMenu=document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click',()=>{
+            const open=mobileMenu.style.display==='flex';
+            mobileMenu.style.display=open?'none':'flex';
+        });
+
+        document.querySelectorAll('.mobile-drawer-link').forEach(link=>{
+            link.addEventListener('click',()=>{
+                if(link.id!=='mobile-lang-toggle') mobileMenu.style.display='none';
+            });
+        });
+
+        /* Revelação lenta ao entrar na tela */
+        const revealElements=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+        const observer=new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },{threshold:.14,rootMargin:'0px 0px -40px 0px'});
+
+        revealElements.forEach(el=>observer.observe(el));
+
+        const heroVisual=document.getElementById('hero-visual');
+        const heroObserver=new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    heroVisual.classList.add('is-visible');
+                    heroObserver.unobserve(heroVisual);
+                }
+            });
+        },{threshold:.2});
+        heroObserver.observe(heroVisual);
+
+        document.getElementById('current-year').textContent=new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eritel - Transformação e Tecnologia</title>
+
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- ESTILOS EM CSS PURO -->
+    <style>
+        /* =========================================
+           RESET BÁSICO E CONFIGURAÇÕES GERAIS
+        ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111827;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        ::selection {
+            background-color: #0052CC;
+            color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        /* =========================================
+           SISTEMA DE GRID / CONTAINERS
+        ========================================= */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+        }
+
+        /* =========================================
+           CABEÇALHO (HEADER) E NAVEGAÇÃO
+        ========================================= */
+        .header {
+            width: 100%;
+            background-color: #ffffff;
+            border-bottom: 1px solid #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-inner {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 40px;
+            }
+        }
+
+        /* Navegação Desktop */
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            gap: 32px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            color: #374151;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            padding: 8px 0;
+        }
+
+        .nav-link:hover {
+            color: #0052CC;
+        }
+
+        /* Dropdown Desktop */
+        .dropdown-wrapper {
+            position: relative;
+        }
+
+        .dropdown-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 0;
+            color: #374151;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        .dropdown-btn:hover {
+            color: #0052CC;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 192px;
+            background-color: #ffffff;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-radius: 8px;
+            padding: 8px 0;
+            display: none;
+            border: 1px solid #f3f4f6;
+        }
+
+        .dropdown-wrapper:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: #374151;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f9fafb;
+            color: #0052CC;
+        }
+
+        /* Menu Mobile Botão */
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            color: #374151;
+            padding: 8px;
+            font-size: 20px;
+        }
+
+        .mobile-menu-btn:hover {
+            color: #0052CC;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+
+        /* Drawer Mobile */
+        .mobile-drawer {
+            display: none; /* Controlado via JS se necessário */
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 8px 16px 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-drawer-wrapper {
+                display: none;
+            }
+        }
+
+        .mobile-drawer-link {
+            display: block;
+            padding: 8px 0;
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 1px solid #f9fafb;
+        }
+
+        .mobile-drawer-link:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-drawer-link:hover {
+            color: #0052CC;
+        }
+
+        /* =========================================
+           CONTEÚDO PRINCIPAL (MAIN)
+        ========================================= */
+        .main-content {
+            flex-grow: 1;
+        }
+
+        /* Seção Hero */
+        .hero-section {
+            padding: 48px 0 64px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-section {
+                padding: 80px 0 64px;
+            }
+        }
+
+        .hero-inner {
+            max-width: 1024px;
+        }
+
+        .hero-title {
+            font-size: 36px;
+            font-weight: 300;
+            color: #111827;
+            line-height: 1.15;
+            letter-spacing: -0.025em;
+        }
+
+        @media (min-width: 640px) {
+            .hero-title {
+                font-size: 48px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-title {
+                font-size: 60px;
+            }
+        }
+
+        .hero-highlight {
+            color: #0052CC;
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            margin-top: 24px;
+            font-size: 18px;
+            color: #6b7280;
+            font-weight: 400;
+            line-height: 1.625;
+            max-width: 896px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-subtitle {
+                font-size: 20px;
+            }
+        }
+
+        /* =========================================
+           SEÇÃO DE ESTATÍSTICAS (CARDS)
+        ========================================= */
+        .stats-section {
+            padding-bottom: 80px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            gap: 48px 32px;
+        }
+
+        @media (min-width: 640px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(6, minmax(0, 1fr));
+            }
+        }
+
+        .stat-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .stat-line {
+            width: 160px;
+            height: 4px;
+            background-color: #0052CC;
+            margin-bottom: 24px;
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: 300;
+            color: #111827;
+            letter-spacing: -0.025em;
+        }
+
+        @media (min-width: 1024px) {
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+
+        .stat-label {
+            margin-top: 8px;
+            font-size: 14px;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .desktop-spacer {
+            display: none;
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-spacer {
+                display: block;
+            }
+        }
+
+        /* =========================================
+           CARROSSEL DE PARCEIROS
+        ========================================= */
+        .carousel-section {
+            border-top: 1px solid #f3f4f6;
+            background-color: #ffffff;
+            padding: 40px 0;
+        }
+
+        @keyframes scroll {
+            0% { 
+                transform: translateX(0); 
+            }
+            100% { 
+                transform: translateX(calc(-250px * 8)); 
+            } 
+        }
+
+        .slider {
+            position: relative;
+            overflow: hidden;
+            background-color: #ffffff;
+            width: 100%;
+            height: 100px;
+        }
+
+        .slider::before,
+        .slider::after {
+            background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+            content: "";
+            height: 100px;
+            position: absolute;
+            width: 150px;
+            z-index: 2;
+        }
+
+        .slider::after {
+            right: 0;
+            top: 0;
+            transform: rotateZ(180deg);
+        }
+
+        .slider::before {
+            left: 0;
+            top: 0;
+        }
+
+        .slide-track {
+            animation: scroll 40s linear infinite;
+            display: flex;
+            width: calc(250px * 16);
+        }
+
+        .slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            width: 250px;
+        }
+
+        .slide img {
+            max-width: 150px;
+            max-height: 80px;
+            object-fit: contain;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .slide img:hover {
+            opacity: 1;
+        }
+
+        /* =========================================
+           RODAPÉ (FOOTER)
+        ========================================= */
+        .footer {
+            background-color: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 48px 0;
+        }
+
+        .footer-inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-inner {
+                flex-direction: row;
+            }
+        }
+
+        .footer-copy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .footer-links a:hover {
+            color: #0052CC;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO (HEADER) -->
+    <header class="header">
+        <div class="container header-inner">
+
+            <!-- Logo Eritel -->
+            <div class="logo-link">
+                <a href="#">
+                    <img src="images/eritel.png" alt="Eritel" class="logo-img">
+                </a>
+            </div>
+            
+            <!-- Navegação Desktop -->
+            <nav class="desktop-nav">
+                
+                <a href="#empresa" class="nav-link">ERITEL</a>
+                
+                <div class="dropdown-wrapper">
+                    <button class="dropdown-btn">
+                        SOLUÇÕES <i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i>
+                    </button>
+                    <!-- Dropdown Content -->
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Transporte de Pacientes</a>
+                        <a href="#" class="dropdown-item">TeleCARE</a>
+                        <a href="#" class="dropdown-item">Giro de Sala</a>
+                    </div>
+                </div>
+                
+                <a href="#cases" class="nav-link">CASES</a>
+                <a href="#podcast" class="nav-link">PODCAST</a>
+                <a href="#blog" class="nav-link">BLOG</a>
+                <a href="#inovacao" class="nav-link">INOVAÇÃO</a>
+                <a href="#carreiras" class="nav-link">CARREIRAS</a>
+                <a href="#contato" class="nav-link">CONTATO</a>
+
+            </nav>
+
+            <!-- Botão Menu Mobile -->
+            <div class="mobile-menu-btn-container">
+                <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Abrir Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            
+        </div>
+
+        <!-- Menu Drawer Mobile -->
+        <div class="mobile-drawer-wrapper">
+            <div id="mobile-menu" class="mobile-drawer" style="display: none;">
+                <a href="#empresa" class="mobile-drawer-link">ERITEL</a>
+                <a href="#solucoes" class="mobile-drawer-link">SOLUÇÕES</a>
+                <a href="#cases" class="mobile-drawer-link">CASES</a>
+                <a href="#podcast" class="mobile-drawer-link">PODCAST</a>
+                <a href="#blog" class="mobile-drawer-link">BLOG</a>
+                <a href="#inovacao" class="mobile-drawer-link">INOVAÇÃO</a>
+                <a href="#carreiras" class="mobile-drawer-link">CARREIRAS</a>
+                <a href="#contato" class="mobile-drawer-link" style="border-bottom: none;">CONTATO</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <!-- SEÇÃO HERO -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-inner">
+                    <h1 class="hero-title">
+                        Inovando o <span class="hero-highlight">ecossistema de</span> saúde, <span class="hero-highlight">conectando</span> tecnologia para salvar vidas.
+                    </h1>
+                    <p class="hero-subtitle">
+                        Se tem um desafio para otimizar fluxos hospitalares, transformar a gestão de leitos, transporte de pacientes ou elevar a excelência assistencial, nós temos a experiência tecnológica para apoiar a sua instituição!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DE ESTATÍSTICAS -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">+ 50</div>
+                        <div class="stat-label">clientes</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">+10.000</div>
+                        <div class="stat-label">Dispositivos</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">7 dos 10</div>
+                        <div class="stat-label">maiores hospitais do Brasil são clientes da ERITEL</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">estados em atuação</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">+ 50</div>
+                        <div class="stat-label">Hospitais no Brasil</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">+ 25 milhões</div>
+                        <div class="stat-label">de Mensagens enviadas por ano</div>
+                    </div>
+
+                    <div class="desktop-spacer"></div>
+
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">escritórios</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">+ 80.000</div>
+                        <div class="stat-label">Transportes por mês</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">+50.000</div>
+                        <div class="stat-label">Códigos por ano</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-line"></div>
+                        <div class="stat-number">+ 25 mil</div>
+                        <div class="stat-label">Limpezas Realizadas por mês</div>
+                    </div>
+
+                    <div class="desktop-spacer"></div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO DO CARROSSEL DE PARCEIROS -->
+        <section class="carousel-section">
+            <div class="container">
+                <div class="slider">
+                    <div class="slide-track">
+                        
+                        <!-- Imagens 1 a 8 -->
+                        <div class="slide"><img src="images/cliente1.jpg" alt="Parceiro 1"></div>
+                        <div class="slide"><img src="images/cliente2.jpg" alt="Parceiro 2"></div>
+                        <div class="slide"><img src="images/cliente3.jpg" alt="Parceiro 3"></div>
+                        <div class="slide"><img src="images/cliente4.jpg" alt="Parceiro 4"></div>
+                        <div class="slide"><img src="images/cliente5.jpg" alt="Parceiro 5"></div>
+                        <div class="slide"><img src="images/cliente10.jpg" alt="Parceiro 6"></div>
+                        <div class="slide"><img src="images/cliente7.jpg" alt="Parceiro 7"></div>
+                        <div class="slide"><img src="images/cliente8.jpg" alt="Parceiro 8"></div>
+
+                        <!-- Repetição (Loop Infinito) -->
+                        <div class="slide"><img src="images/cliente1.jpg" alt="Parceiro 1"></div>
+                        <div class="slide"><img src="images/cliente2.jpg" alt="Parceiro 2"></div>
+                        <div class="slide"><img src="images/cliente3.jpg" alt="Parceiro 3"></div>
+                        <div class="slide"><img src="images/cliente4.jpg" alt="Parceiro 4"></div>
+                        <div class="slide"><img src="images/cliente5.jpg" alt="Parceiro 5"></div>
+                        <div class="slide"><img src="images/cliente10.jpg" alt="Parceiro 6"></div>
+                        <div class="slide"><img src="images/cliente7.jpg" alt="Parceiro 7"></div>
+                        <div class="slide"><img src="images/cliente8.jpg" alt="Parceiro 8"></div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- RODAPÉ (FOOTER) -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            
+            <div class="footer-copy">
+                <span>© 2026 Eritel. Todos os direitos reservados.</span>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#">Termos de Uso</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Compliance</a>
+            </div>
+            
+        </div>
+    </footer>
+
+    <!-- Script Simples para o Menu Mobile -->
+    <script>
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.style.display === 'none' || menu.style.display === '') {
+                menu.style.display = 'flex';
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
+    
+</body>
+</html>

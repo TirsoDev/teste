@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eritel - Clientes</title>
+
+    <link rel="icon" type="image/x-icon" href="images/eritel.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #111827;
+            min-height: 100vh;
+            font-size: 18px;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding: 0 32px;
+            }
+        }
+
+        /* ================================
+           NAVEGAÇÃO
+        ================================= */
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        
+
+        /* ================================
+           ANIMAÇÕES
+        ================================= */
+        .reveal,
+        .reveal-left,
+        .reveal-right {
+            opacity: 0;
+            transition:
+                opacity 1.25s ease,
+                transform 1.25s cubic-bezier(0.2, 0.7, 0.2, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal {
+            transform: translateY(45px);
+        }
+
+        .reveal-left {
+            transform: translateX(-70px);
+        }
+
+        .reveal-right {
+            transform: translateX(70px);
+        }
+
+        .reveal.is-visible,
+        .reveal-left.is-visible,
+        .reveal-right.is-visible {
+            opacity: 1;
+            transform: translate(0, 0);
+        }
+
+        /* ================================
+           INTRODUÇÃO
+        ================================= */
+        .clients-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 94px 0 84px;
+            background:
+                radial-gradient(
+                    circle at 84% 16%,
+                    rgba(0, 82, 204, 0.10),
+                    transparent 27%
+                ),
+                linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+        }
+
+        .clients-hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(0, 82, 204, 0.08);
+            border-radius: 50%;
+            right: -230px;
+            top: -280px;
+            box-shadow:
+                0 0 0 55px rgba(0, 82, 204, 0.025),
+                0 0 0 110px rgba(0, 82, 204, 0.018);
+            pointer-events: none;
+        }
+
+        .clients-hero-inner {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 30px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-kicker {
+            font-size: 12px;
+            font-weight: 800;
+            color: #0052CC;
+            margin-bottom: 18px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            max-width: 1000px;
+            color: #111827;
+            font-size: clamp(48px, 6vw, 82px);
+            line-height: 0.93;
+            font-weight: 700;
+            letter-spacing: -0.07em;
+        }
+
+        .hero-title span {
+            color: #0052CC;
+        }
+
+        .hero-copy {
+            max-width: 920px;
+            margin-top: 28px;
+            color: #5b6677;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* ================================
+           CARROSSEL
+        ================================= */
+        .clients-section {
+            position: relative;
+            overflow: hidden;
+            background: #ffffff;
+            padding: 92px 0 118px;
+        }
+
+        .clients-section::before {
+            content: none;
+        }
+
+        .clients-heading {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto 56px;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .clients-heading h2 {
+            color: #6fa8dc;
+            font-size: clamp(34px, 4vw, 54px);
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+
+        .clients-heading p {
+            max-width: 690px;
+            margin: 20px auto 0;
+            color: #718096;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .carousel-shell {
+            position: relative;
+            z-index: 2;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 26px;
+        }
+
+        .carousel-window {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0 34px;
+            -webkit-mask-image: linear-gradient(
+                to right,
+                transparent 0,
+                #000 4%,
+                #000 96%,
+                transparent 100%
+            );
+            mask-image: linear-gradient(
+                to right,
+                transparent 0,
+                #000 4%,
+                #000 96%,
+                transparent 100%
+            );
+        }
+
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            gap: 24px;
+            will-change: transform;
+            animation: clients-scroll 34s linear infinite;
+        }
+
+        .carousel-window:hover .carousel-track,
+        .carousel-window:focus-within .carousel-track {
+            animation-play-state: paused;
+        }
+
+        .client-card {
+            flex: 0 0 230px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 22px;
+            background: #ffffff;
+            border: 1px solid #e2e9f2;
+            border-radius: 18px;
+            box-shadow: 0 12px 32px rgba(25, 56, 92, 0.07);
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+        }
+
+        .client-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(0, 82, 204, 0.25);
+            box-shadow: 0 20px 42px rgba(25, 56, 92, 0.13);
+        }
+
+        .client-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .client-card:hover img {
+            transform: scale(1.035);
+        }
+
+        @keyframes clients-scroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(calc(-50% - 12px));
+            }
+        }
+
+        .carousel-note {
+            margin-top: 25px;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+            letter-spacing: 0.03em;
+        }
+
+        @media (max-width: 900px) {
+            .clients-hero {
+                padding: 72px 0 68px;
+            }
+
+            .clients-section {
+                padding: 76px 0 92px;
+            }
+
+            .carousel-track {
+                gap: 18px;
+                animation-duration: 28s;
+            }
+
+            .client-card {
+                flex-basis: 205px;
+                height: 135px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .clients-hero {
+                padding: 58px 0 58px;
+            }
+
+            .clients-hero-inner {
+                padding: 0 22px;
+            }
+
+            .hero-title {
+                font-size: 44px;
+            }
+
+            .hero-copy {
+                font-size: 16px;
+                line-height: 1.75;
+            }
+
+            .clients-section {
+                padding: 64px 0 80px;
+            }
+
+            .clients-heading {
+                margin-bottom: 40px;
+            }
+
+            .clients-heading p {
+                font-size: 16px;
+            }
+
+            .carousel-shell {
+                padding: 0 12px;
+            }
+
+            .carousel-window {
+                padding: 14px 0 28px;
+            }
+
+            .carousel-track {
+                gap: 14px;
+                animation-duration: 24s;
+            }
+
+            .client-card {
+                flex-basis: 180px;
+                height: 118px;
+                padding: 18px;
+                border-radius: 15px;
+            }
+        }
+
+        /* ================================
+           RODAPÉ
+        ================================= */
+
+        /* ================================
+           BARRA DE NAVEGAÇÃO PADRÃO (igual em todas as páginas)
+        ================================= */
+        .header {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 4%;
+        }
+
+        .header-inner {
+            height: 100px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .logo-link {
+            justify-self: start;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: 135px;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 48px;
+            }
+        }
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-self: center;
+            gap: 24px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #374151;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 1200px) {
+            .desktop-nav {
+                gap: 28px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: #0052CC;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            border-radius: 3px;
+            background: #0052CC;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-active {
+            color: #0052CC !important;
+        }
+
+        .nav-link.nav-active::after {
+            transform: scaleX(1);
+        }
+
+        .header-actions {
+            display: none;
+            align-items: center;
+            justify-self: end;
+            gap: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .header-actions {
+                display: flex;
+            }
+        }
+
+        .plantao-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .plantao-btn:hover {
+            background: #DB6A0B;
+            transform: translateY(-1px);
+        }
+
+        .lang-toggle-btn {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 0;
+            font-family: inherit;
+        }
+
+        .lang-toggle-btn:hover {
+            background: #0052CC;
+            color: #ffffff;
+        }
+
+        .mobile-menu-btn-container {
+            display: flex;
+            align-items: center;
+            justify-self: end;
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            color: #374151;
+            padding: 8px;
+            font-size: 24px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn:hover {
+            color: #0052CC;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn-container {
+                display: none;
+            }
+        }
+
+        .mobile-drawer {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 8px 16px 24px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-drawer-link {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            color: #374151;
+            border: 0;
+            border-bottom: 1px solid #f9fafb;
+            background: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .mobile-drawer-link:hover {
+            color: #0052CC;
+        }
+
+        .mobile-drawer-link.nav-active {
+            border-bottom: 2px solid #0052CC;
+        }
+
+        .mobile-drawer .mobile-plantao {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            border-radius: 8px;
+            border-bottom: 0;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .mobile-drawer .mobile-plantao:hover {
+            background: #DB6A0B;
+            color: #ffffff;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-drawer-wrapper {
+                display: none;
+            }
+        }
+
+        /* ================================
+           RODAPÉ PADRÃO (igual em todas as páginas)
+        ================================= */
+        .footer {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 48px 0 32px;
+            color: #6b7280;
+        }
+
+        .footer-wrap {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .footer-wrap {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-wrap {
+                padding: 0 32px;
+            }
+        }
+
+        .footer-offices {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            padding-bottom: 32px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .footer-office {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 16px;
+            line-height: 1.5;
+            min-width: 0;
+        }
+
+        .footer-office-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #374151;
+            font-weight: 700;
+        }
+
+        .footer-office-name i {
+            color: #0052CC;
+            font-size: 14px;
+        }
+
+        .footer-office a {
+            color: #6b7280;
+            overflow-wrap: anywhere;
+        }
+
+        .footer-office a:hover {
+            color: #0052CC;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
+
+        .footer-copy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .footer-links a:hover {
+            color: #0052CC;
+        }
+
+        @media (max-width: 900px) {
+            .footer-offices {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-copy {
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <div class="logo-link">
+                <a href="index.html">
+                    <img src="images/eritel.png" alt="Eritel" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="nav-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="nav-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="nav-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="nav-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="nav-link nav-active" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="nav-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="nav-link" data-i18n="contato">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="plantao.html" class="plantao-btn"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button class="lang-toggle-btn" id="lang-toggle" type="button">PT / EN</button>
+            </div>
+
+            <div class="mobile-menu-btn-container">
+                <button
+                    class="mobile-menu-btn"
+                    id="mobile-menu-btn"
+                    type="button"
+                    aria-label="Abrir Menu"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-drawer-wrapper">
+            <div class="mobile-drawer" id="mobile-menu" style="display: none;">
+                <a href="index.html" class="mobile-drawer-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="mobile-drawer-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="mobile-drawer-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="mobile-drawer-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="mobile-drawer-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="mobile-drawer-link nav-active" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="mobile-drawer-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="mobile-drawer-link" data-i18n="contato">Contato</a>
+                <a href="plantao.html" class="mobile-drawer-link mobile-plantao"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button
+                    class="mobile-drawer-link"
+                    id="mobile-lang-toggle"
+                    type="button"
+                >
+                    PT / EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="clients-hero">
+            <div class="clients-hero-inner">
+                <div class="hero-kicker reveal" data-i18n="hero_kicker">
+                    Nossos Clientes
+                </div>
+
+                <h1 class="hero-title reveal" data-i18n-html="hero_title">
+                    Parcerias que fortalecem a <span>tecnologia em saúde.</span>
+                </h1>
+
+                <p class="hero-copy reveal" data-i18n="hero_copy">
+                    A Eritel trabalha ao lado de organizações que buscam comunicação,
+                    segurança e eficiência para suas operações. Nossa experiência é construída
+                    em relações de longo prazo e soluções desenvolvidas para ambientes críticos.
+                </p>
+            </div>
+        </section>
+
+
+
+            <div class="carousel-shell reveal">
+                <div class="carousel-window" id="clients-carousel">
+                    <div class="carousel-track" id="clients-track">
+                        <article class="client-card">
+                            <img src="images/cliente1.jpg" alt="Cliente 1" loading="eager">
+                        </article>
+
+                        <article class="client-card">
+                            <img src="images/cliente2.jpg" alt="Cliente 2" loading="eager">
+                        </article>
+
+                        <article class="client-card">
+                            <img src="images/cliente3.jpg" alt="Cliente 3" loading="eager">
+                        </article>
+
+                        <article class="client-card">
+                            <img src="images/cliente4.jpg" alt="Cliente 4" loading="eager">
+                        </article>
+
+                        <article class="client-card">
+                            <img src="images/cliente5.jpg" alt="Cliente 5" loading="eager">
+                        </article>
+
+                        <article class="client-card">
+                            <img src="images/cliente6.jpg" alt="Cliente 6" loading="eager">
+                        </article>
+
+                        <article class="client-card">
+                            <img src="images/cliente7.jpg" alt="Cliente 7" loading="eager">
+                        </article>
+
+                        <article class="client-card">
+                            <img src="images/cliente8.jpg" alt="Cliente 8" loading="eager">
+                        </article>
+
+                        <article class="client-card">
+                            <img src="images/cliente9.jpg" alt="Cliente 9" loading="eager">
+                        </article>
+
+                        <article class="client-card">
+                            <img src="images/cliente10.jpg" alt="Cliente 10" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente1.jpg" alt="" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente2.jpg" alt="" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente3.jpg" alt="" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente4.jpg" alt="" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente5.jpg" alt="" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente6.jpg" alt="" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente7.jpg" alt="" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente8.jpg" alt="" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente9.jpg" alt="" loading="eager">
+                        </article>
+
+                        <article class="client-card" aria-hidden="true">
+                            <img src="images/cliente10.jpg" alt="" loading="eager">
+                        </article>
+                    </div>
+                </div>
+<br>
+<br>
+<br>
+<br>
+
+
+            </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-wrap">
+            <div class="footer-offices">
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> São Paulo</div>
+                    <a href="tel:+551123481381">(11) 2348-1381</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Rio de Janeiro</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="mailto:rio@eritel.com.br">rio@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Porto Alegre (RS, SC, PR)</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="tel:+555133628506">(51) 3362-8506</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    <span>
+                        © <span id="current-year">2026</span> Eritel.
+                        <span data-i18n="rights">Todos os direitos reservados.</span>
+                    </span>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#" data-i18n="termos">Termos de Uso</a>
+                    <a href="#" data-i18n="privacidade">Política de Privacidade</a>
+                    <a href="#" data-i18n="compliance">Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                home: 'Home',
+                empresa: 'Empresa',
+                solucoes: 'Soluções',
+                produtos: 'Produtos',
+                servicos: 'Serviços',
+                clientes: 'Clientes',
+                blog: 'Blog',
+                contato: 'Contato', plantao: 'Plantão',
+                language_button: 'PT / EN',
+
+                hero_kicker: 'Nossos Clientes',
+
+                hero_title:
+                    'Parcerias que fortalecem a <span>tecnologia em saúde.</span>',
+
+                hero_copy:
+                    'A Eritel trabalha ao lado de organizações que buscam comunicação, segurança e eficiência para suas operações. Nossa experiência é construída em relações de longo prazo e soluções desenvolvidas para ambientes críticos.',
+
+                clients_title: 'CLIENTES',
+
+                clients_subtitle:
+                    'Empresas e instituições que fazem parte da trajetória da Eritel.',
+
+                carousel_note:
+                    'Passe o cursor sobre o carrossel para pausar a movimentação.',
+
+                termos: 'Termos de Uso',
+                privacidade: 'Política de Privacidade',
+                rights: 'Todos os direitos reservados.',
+                compliance: 'Compliance'
+            },
+
+            en: {
+                home: 'Home',
+                empresa: 'Company',
+                solucoes: 'Solutions',
+                produtos: 'Products',
+                servicos: 'Services',
+                clientes: 'Clients',
+                blog: 'Blog',
+                contato: 'Contact', plantao: 'On-call',
+                language_button: 'EN / PT',
+
+                hero_kicker: 'Our Clients',
+
+                hero_title:
+                    'Partnerships that strengthen <span>healthcare technology.</span>',
+
+                hero_copy:
+                    'Eritel works alongside organizations seeking communication, security and efficiency for their operations. Our experience is built on long-term relationships and solutions designed for critical environments.',
+
+                clients_title: 'CLIENTS',
+
+                clients_subtitle:
+                    'Companies and institutions that are part of Eritel’s journey.',
+
+                carousel_note:
+                    'Hover over the carousel to pause the movement.',
+
+                termos: 'Terms of Use',
+                privacidade: 'Privacy Policy',
+                rights: 'All rights reserved.',
+                compliance: 'Compliance'
+            }
+        };
+
+        let currentLang = 'pt';
+
+        const langToggle = document.getElementById('lang-toggle');
+        const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+
+        function updateLanguage() {
+            const dictionary = translations[currentLang];
+
+            document.querySelectorAll('[data-i18n]').forEach((element) => {
+                const key = element.getAttribute('data-i18n');
+
+                if (dictionary[key] !== undefined) {
+                    element.textContent = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+                const key = element.getAttribute('data-i18n-html');
+
+                if (dictionary[key] !== undefined) {
+                    element.innerHTML = dictionary[key];
+                }
+            });
+
+            const languageLabel = currentLang === 'pt'
+                ? 'PT / EN'
+                : 'EN / PT';
+
+            langToggle.textContent = languageLabel;
+            mobileLangToggle.textContent = languageLabel;
+            document.documentElement.lang = currentLang === 'pt'
+                ? 'pt-BR'
+                : 'en';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'pt'
+                ? 'en'
+                : 'pt';
+
+            updateLanguage();
+            try { localStorage.setItem('eritel-lang', currentLang); } catch (err) {}
+        }
+
+        langToggle.addEventListener('click', toggleLanguage);
+        mobileLangToggle.addEventListener('click', toggleLanguage);
+
+        try {
+            if (localStorage.getItem('eritel-lang') === 'en') {
+                currentLang = 'en';
+                updateLanguage();
+            }
+        } catch (err) {}
+
+        const mobileButton = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileButton.addEventListener('click', () => {
+            const isOpen = mobileMenu.style.display === 'flex';
+            mobileMenu.style.display = isOpen ? 'none' : 'flex';
+        });
+
+        document.querySelectorAll('.mobile-drawer-link').forEach((link) => {
+            link.addEventListener('click', () => {
+                if (link.id !== 'mobile-lang-toggle') {
+                    mobileMenu.style.display = 'none';
+                }
+            });
+        });
+
+        const revealElements = document.querySelectorAll(
+            '.reveal, .reveal-left, .reveal-right'
+        );
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.14,
+                rootMargin: '0px 0px -40px 0px'
+            }
+        );
+
+        revealElements.forEach((element) => observer.observe(element));
+
+        const carouselTrack = document.getElementById('clients-track');
+        const carouselWindow = document.getElementById('clients-carousel');
+
+        carouselWindow.addEventListener('mouseenter', () => {
+            carouselTrack.style.animationPlayState = 'paused';
+        });
+
+        carouselWindow.addEventListener('mouseleave', () => {
+            carouselTrack.style.animationPlayState = 'running';
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

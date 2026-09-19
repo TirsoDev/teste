@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eritel - Soluções</title>
+
+    <link rel="icon" type="image/x-icon" href="images/eritel.ico">
+
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           RESET E NAVEGAÇÃO / RODAPÉ (HERDADO)
+        ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #111827;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-size: 18px;
+        }
+
+        ::selection {
+            background-color: #0052CC;
+            color: #ffffff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1440px; 
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) { .container { padding: 0 24px; } }
+        @media (min-width: 1024px) { .container { padding: 0 32px; } }
+
+        /* HEADER */
+        
+
+        
+
+        
+
+        
+        
+        
+
+        
+
+        
+        
+
+        
+        
+
+        
+
+        
+        
+
+        
+
+        
+        
+
+        
+
+        
+
+        
+        
+
+        /* =========================================
+           GRELHA DE CARTÕES DE SOLUÇÕES
+        ========================================= */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            padding: 80px 0 100px; /* Aumentado o padding superior por remover o titulo */
+            max-width: 1100px;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .solutions-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .solutions-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Estilos dos Cartões Solicitados (Borda Fina, Azul e Amarelo Dourado) */
+        .card {
+            width: 100%;
+            max-width: 340px;
+            padding: 3px; /* Borda fina */
+            background-image: linear-gradient(to right bottom, #3b82f6, #3b82f6, #3b82f6, #3daee2, #3daee2);
+            background-size: 200% 200%;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-int {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            font-size: 16px;
+            border-radius: 9px; /* Arredondado ligeiramente menor que o card para encaixar bem na borda fina */
+            background-color: white;
+        }
+
+        .img {
+            width: 100%;
+            height: 175px;
+            background-color: #f3f4f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover .img img {
+            transform: scale(1.05);
+        }
+
+        .card-data {
+            padding: 24px 20px;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .title {
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+            color: #111827;
+            line-height: 1.3;
+        }
+
+        .desc {
+            color: #4b5563;
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Badges */
+        .card__span {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 12px;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: white;
+            color: #0052CC;
+            padding: 6px 12px;
+            border-radius: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+
+        .card .card-btn {
+            display: block;
+            text-align: center;
+            width: 100%;
+            margin-top: auto; 
+            background-image: linear-gradient(to right bottom,  #3b82f6, #3b82f6, #3b82f6);
+            background-size: 200% 200%;
+            border: none;
+            padding: 12px 10px;
+            color: white;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 6px;
+            transition: transform 0.1s ease-in;
+            cursor: pointer;
+        }
+
+        .card .card-btn:active {
+            transform: translateY(3px);
+        }
+
+        .card:hover, .card .card-btn:hover {
+            animation: gradient 0.8s ease-in 1 forwards;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
+        /* =========================================
+           RODAPÉ (FOOTER)
+        ========================================= */
+        .main-content { flex-grow: 1; }
+
+
+        /* ================================
+           APLICAÇÃO DE CADA SOLUÇÃO
+        ================================= */
+        [hidden] { display: none !important; }
+
+        .solution-details {
+            max-width: 1280px;
+            padding-top: 40px;
+            padding-bottom: 100px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            border: 1px solid #d1d5db;
+            border-radius: 999px;
+            background: #ffffff;
+            color: #374151;
+            font-size: 14px;
+            font-weight: 700;
+            transition: color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        .back-btn:hover {
+            color: #0052CC;
+            border-color: #0052CC;
+            transform: translateX(-3px);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+            align-items: center;
+            gap: 64px;
+            margin-top: 48px;
+        }
+
+        .detail-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: #0052CC;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .detail-title {
+            margin-top: 20px;
+            font-size: clamp(38px, 5vw, 66px);
+            line-height: 0.93;
+            font-weight: 700;
+            letter-spacing: -0.07em;
+            color: #111827;
+        }
+
+        .detail-desc {
+            margin-top: 28px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4b5563;
+        }
+
+        .detail-cta {
+            display: inline-block;
+            margin-top: 32px;
+            padding: 14px 26px;
+            border-radius: 8px;
+            background: #0052CC;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .detail-cta:hover {
+            background: #003f9e;
+            transform: translateY(-2px);
+        }
+
+        /* Cartão de vídeo: mesmo visual do vídeo da página inicial */
+        .video-card {
+            position: relative;
+            width: 100%;
+            max-width: 560px;
+            aspect-ratio: 4 / 3;
+            justify-self: end;
+            border-radius: 30px;
+            padding: 14px;
+            background: linear-gradient(145deg, #ffffff 0%, #eceef2 100%);
+            box-shadow: 0 30px 50px -12px rgba(15, 23, 42, 0.30),
+                        0 10px 20px rgba(15, 23, 42, 0.12),
+                        inset 0 2px 2px #ffffff,
+                        inset 0 -4px 8px rgba(15, 23, 42, 0.12);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background-color: #e5e7eb;
+        }
+
+        .video-frame::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            box-shadow: inset 0 0 0 4px #d9dce1,
+                        inset 0 4px 10px rgba(107, 114, 128, 0.35);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .video-card video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-toggle,
+        .video-mute {
+            position: absolute;
+            bottom: 28px;
+            z-index: 3;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: rgba(17, 24, 39, 0.6);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .video-mute { right: 28px; }
+        .video-toggle { right: 82px; }
+
+        .video-card.show-controls .video-toggle,
+        .video-card.show-controls .video-mute,
+        .video-card.is-idle .video-toggle,
+        .video-card.is-idle .video-mute {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .video-toggle:hover,
+        .video-mute:hover {
+            background-color: #0052CC;
+            transform: scale(1.08);
+        }
+
+        @media (max-width: 900px) {
+            .detail-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .video-card {
+                justify-self: center;
+            }
+
+            .detail-title { font-size: 40px; }
+            .detail-desc { font-size: 16px; line-height: 1.75; }
+            .solution-details { padding-bottom: 64px; }
+        }
+
+        /* ================================
+           BARRA DE NAVEGAÇÃO PADRÃO (igual em todas as páginas)
+        ================================= */
+        .header {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 4%;
+        }
+
+        .header-inner {
+            height: 100px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .logo-link {
+            justify-self: start;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: 135px;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 48px;
+            }
+        }
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-self: center;
+            gap: 24px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #374151;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 1200px) {
+            .desktop-nav {
+                gap: 28px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: #0052CC;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            border-radius: 3px;
+            background: #0052CC;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-active {
+            color: #0052CC !important;
+        }
+
+        .nav-link.nav-active::after {
+            transform: scaleX(1);
+        }
+
+        .header-actions {
+            display: none;
+            align-items: center;
+            justify-self: end;
+            gap: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .header-actions {
+                display: flex;
+            }
+        }
+
+        .plantao-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .plantao-btn:hover {
+            background: #DB6A0B;
+            transform: translateY(-1px);
+        }
+
+        .lang-toggle-btn {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 0;
+            font-family: inherit;
+        }
+
+        .lang-toggle-btn:hover {
+            background: #0052CC;
+            color: #ffffff;
+        }
+
+        .mobile-menu-btn-container {
+            display: flex;
+            align-items: center;
+            justify-self: end;
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            color: #374151;
+            padding: 8px;
+            font-size: 24px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn:hover {
+            color: #0052CC;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn-container {
+                display: none;
+            }
+        }
+
+        .mobile-drawer {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 8px 16px 24px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-drawer-link {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            color: #374151;
+            border: 0;
+            border-bottom: 1px solid #f9fafb;
+            background: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .mobile-drawer-link:hover {
+            color: #0052CC;
+        }
+
+        .mobile-drawer-link.nav-active {
+            border-bottom: 2px solid #0052CC;
+        }
+
+        .mobile-drawer .mobile-plantao {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            border-radius: 8px;
+            border-bottom: 0;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .mobile-drawer .mobile-plantao:hover {
+            background: #DB6A0B;
+            color: #ffffff;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-drawer-wrapper {
+                display: none;
+            }
+        }
+
+        /* ================================
+           RODAPÉ PADRÃO (igual em todas as páginas)
+        ================================= */
+        .footer {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 48px 0 32px;
+            color: #6b7280;
+        }
+
+        .footer-wrap {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .footer-wrap {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-wrap {
+                padding: 0 32px;
+            }
+        }
+
+        .footer-offices {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            padding-bottom: 32px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .footer-office {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 16px;
+            line-height: 1.5;
+            min-width: 0;
+        }
+
+        .footer-office-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #374151;
+            font-weight: 700;
+        }
+
+        .footer-office-name i {
+            color: #0052CC;
+            font-size: 14px;
+        }
+
+        .footer-office a {
+            color: #6b7280;
+            overflow-wrap: anywhere;
+        }
+
+        .footer-office a:hover {
+            color: #0052CC;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
+
+        .footer-copy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .footer-links a:hover {
+            color: #0052CC;
+        }
+
+        @media (max-width: 900px) {
+            .footer-offices {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-copy {
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <div class="logo-link">
+                <a href="index.html">
+                    <img src="images/eritel.png" alt="Eritel" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="nav-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="nav-link nav-active" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="nav-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="nav-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="nav-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="nav-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="nav-link" data-i18n="contato">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="plantao.html" class="plantao-btn"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button class="lang-toggle-btn" id="lang-toggle" type="button">PT / EN</button>
+            </div>
+
+            <div class="mobile-menu-btn-container">
+                <button
+                    class="mobile-menu-btn"
+                    id="mobile-menu-btn"
+                    type="button"
+                    aria-label="Abrir Menu"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-drawer-wrapper">
+            <div class="mobile-drawer" id="mobile-menu" style="display: none;">
+                <a href="index.html" class="mobile-drawer-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="mobile-drawer-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="mobile-drawer-link nav-active" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="mobile-drawer-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="mobile-drawer-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="mobile-drawer-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="mobile-drawer-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="mobile-drawer-link" data-i18n="contato">Contato</a>
+                <a href="plantao.html" class="mobile-drawer-link mobile-plantao"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button
+                    class="mobile-drawer-link"
+                    id="mobile-lang-toggle"
+                    type="button"
+                >
+                    PT / EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- GRELHA DE CARTÕES -->
+        <div class="container" id="solutions-list">
+            <div class="solutions-grid">
+                
+                <!-- CARTÃO 1 -->
+                <div class="card">
+                    <div class="card-int">
+                        <span class="card__span"><i class="fa-solid fa-bed"></i> <span data-i18n="badge1">Gestão</span></span>
+                        <div class="img">
+                            <img src="images/placeholder_leitos.jpg" alt="Liberação de Leitos" onerror="this.style.display='none'">
+                        </div>
+                        <div class="card-data">
+                            <h3 class="title" data-i18n="sol1_title">Solução Liberação de Leitos</h3>
+                            <p class="desc" data-i18n="sol1_desc">A Solução Eritel de Liberação de Leitos, integrada com os principais fornecedores de Software de Gestão Hospitalar (HIS) do mercado, irá contribuir para aumentar a eficiência e os resultados do Hospital.</p>
+                            <a class="card-btn" href="solucoes.html#leitos" data-solution="leitos" data-i18n="btn_saiba_mais">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTÃO 2 -->
+                <div class="card">
+                    <div class="card-int">
+                        <span class="card__span"><i class="fa-solid fa-wheelchair"></i> <span data-i18n="badge2">Fluxo</span></span>
+                        <div class="img">
+                            <img src="images/placeholder_transporte.jpg" alt="Transporte de Pacientes" onerror="this.style.display='none'">
+                        </div>
+                        <div class="card-data">
+                            <h3 class="title" data-i18n="sol2_title">Solução Transporte de Pacientes</h3>
+                            <p class="desc" data-i18n="sol2_desc">A Solução Eritel de Transporte, intra-hospitalar, de Pacientes, gerencia e controla todos os processos de deslocamentos de Pacientes, minimizando os atrasos nos procedimentos, inclusive de cirurgias, aumentando a eficiência do Hospital.</p>
+                            <a class="card-btn" href="solucoes.html#transporte" data-solution="transporte" data-i18n="btn_saiba_mais">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTÃO 3 -->
+                <div class="card">
+                    <div class="card-int">
+                        <span class="card__span"><i class="fa-solid fa-truck-medical"></i> <span data-i18n="badge3">Crítico</span></span>
+                        <div class="img">
+                            <img src="images/placeholder_emergencia.jpg" alt="Códigos de Emergência" onerror="this.style.display='none'">
+                        </div>
+                        <div class="card-data">
+                            <h3 class="title" data-i18n="sol3_title">Solução de Códigos de Emergência</h3>
+                            <p class="desc" data-i18n="sol3_desc">O atendimento de Pacientes em situações de emergência é uma questão de missão crítica, a Solução Eritel permite gerar diversos códigos, como código azul e amarelo, sendo uma ferramenta poderosa de resposta rápida que permite a mobilização da equipe multidisciplinar do Hospital, de forma precisa, completa, sem ambiguidade e compreendida por todos.</p>
+                            <a class="card-btn" href="solucoes.html#emergencia" data-solution="emergencia" data-i18n="btn_saiba_mais">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTÃO 4 -->
+                <div class="card">
+                    <div class="card-int">
+                        <span class="card__span"><i class="fa-solid fa-vial"></i> <span data-i18n="badge4">Laboratório</span></span>
+                        <div class="img">
+                            <img src="images/placeholder_laboratorio.jpg" alt="Coleta de Laboratório" onerror="this.style.display='none'">
+                        </div>
+                        <div class="card-data">
+                            <h3 class="title" data-i18n="sol4_title">Solução Coleta de Laboratório</h3>
+                            <p class="desc" data-i18n="sol4_desc">A demanda do laboratório para coleta e retirada de exames é algo muito crítico e dinâmico, sendo imprescindível para o bom funcionamento do hospital. A Solução de Coleta de exames de laboratório é uma ferramenta poderosa de resposta rápida que permite o controle de todos os coletores, distribuindo de forma inteligente todos os pedidos de coletas e retiradas.</p>
+                            <a class="card-btn" href="solucoes.html#laboratorio" data-solution="laboratorio" data-i18n="btn_saiba_mais">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTÃO 5 -->
+                <div class="card">
+                    <div class="card-int">
+                        <span class="card__span"><i class="fa-regular fa-comments"></i> <span data-i18n="badge5">Comunicação</span></span>
+                        <div class="img">
+                            <img src="images/placeholder_mensagens.jpg" alt="Plataforma de Mensagens" onerror="this.style.display='none'">
+                        </div>
+                        <div class="card-data">
+                            <h3 class="title" data-i18n="sol5_title">Plataforma de Mensagens</h3>
+                            <p class="desc" data-i18n="sol5_desc">No ambiente hospitalar o foco das atividades está centrado no Paciente que demanda os mais diversos serviços durante a sua internação. As solicitações de serviços estão concentradas na Enfermagem que é a responsável pelo atendimento direto das necessidades dos Pacientes. Para solicitar os serviços o setor de enfermagem precisa ter uma ferramenta de fluxo de comunicação inteligente que possibilite se comunicar, de forma rápida e eficiente, com os outros setores do Hospital.</p>
+                            <a class="card-btn" href="solucoes.html#mensagens" data-solution="mensagens" data-i18n="btn_saiba_mais">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARTÃO 6 -->
+                <div class="card">
+                    <div class="card-int">
+                        <span class="card__span"><i class="fa-solid fa-apple-whole"></i> <span data-i18n="badge6">Hotelaria</span></span>
+                        <div class="img">
+                            <img src="images/placeholder_nutricao.jpg" alt="Solicitações de Nutrição" onerror="this.style.display='none'">
+                        </div>
+                        <div class="card-data">
+                            <h3 class="title" data-i18n="sol6_title">Solicitações de Nutrição</h3>
+                            <p class="desc" data-i18n="sol6_desc">Controla e organiza as solicitações de Nutrição, mudanças de dietas e solicitações de refeições, garantindo agilidade e precisão no atendimento alimentar dos pacientes internados.</p>
+                            <a class="card-btn" href="solucoes.html#nutricao" data-solution="nutricao" data-i18n="btn_saiba_mais">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- APLICAÇÃO DE CADA SOLUÇÃO (abre na mesma página) -->
+        <div class="container solution-details" id="solution-details" hidden>
+            <section class="solution-detail" id="detail-leitos" data-cover="4" hidden>
+                <button class="back-btn" type="button" data-back>
+                    <i class="fa-solid fa-arrow-left"></i> <span data-i18n="back_solutions">Voltar para Soluções</span>
+                </button>
+
+                <div class="detail-grid">
+                    <div class="detail-text">
+                        <span class="detail-badge"><i class="fa-solid fa-bed"></i> <span data-i18n="badge1">Gestão</span></span>
+                        <h2 class="detail-title" data-i18n="sol1_title">Solução Liberação de Leitos</h2>
+                        <p class="detail-desc" data-i18n="sol1_desc">A Solução Eritel de Liberação de Leitos, integrada com os principais fornecedores de Software de Gestão Hospitalar (HIS) do mercado, irá contribuir para aumentar a eficiência e os resultados do Hospital.</p>
+                        <a class="detail-cta" href="contato.html" data-i18n="detail_cta">Fale com um especialista</a>
+                    </div>
+
+                    <div class="video-card is-idle">
+                        <div class="video-frame">
+                            <video src="videos/eritel.mp4" preload="metadata" loop playsinline></video>
+                        </div>
+                        <button class="video-toggle" type="button" aria-label="Reproduzir vídeo">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button class="video-mute" type="button" aria-label="Silenciar vídeo">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="solution-detail" id="detail-transporte" data-cover="4" hidden>
+                <button class="back-btn" type="button" data-back>
+                    <i class="fa-solid fa-arrow-left"></i> <span data-i18n="back_solutions">Voltar para Soluções</span>
+                </button>
+
+                <div class="detail-grid">
+                    <div class="detail-text">
+                        <span class="detail-badge"><i class="fa-solid fa-wheelchair"></i> <span data-i18n="badge2">Fluxo</span></span>
+                        <h2 class="detail-title" data-i18n="sol2_title">Solução Transporte de Pacientes</h2>
+                        <p class="detail-desc" data-i18n="sol2_desc">A Solução Eritel de Transporte, intra-hospitalar, de Pacientes, gerencia e controla todos os processos de deslocamentos de Pacientes, minimizando os atrasos nos procedimentos, inclusive de cirurgias, aumentando a eficiência do Hospital.</p>
+                        <a class="detail-cta" href="contato.html" data-i18n="detail_cta">Fale com um especialista</a>
+                    </div>
+
+                    <div class="video-card is-idle">
+                        <div class="video-frame">
+                            <video src="videos/eritel.mp4" preload="metadata" loop playsinline></video>
+                        </div>
+                        <button class="video-toggle" type="button" aria-label="Reproduzir vídeo">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button class="video-mute" type="button" aria-label="Silenciar vídeo">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="solution-detail" id="detail-emergencia" data-cover="4" hidden>
+                <button class="back-btn" type="button" data-back>
+                    <i class="fa-solid fa-arrow-left"></i> <span data-i18n="back_solutions">Voltar para Soluções</span>
+                </button>
+
+                <div class="detail-grid">
+                    <div class="detail-text">
+                        <span class="detail-badge"><i class="fa-solid fa-truck-medical"></i> <span data-i18n="badge3">Crítico</span></span>
+                        <h2 class="detail-title" data-i18n="sol3_title">Solução de Códigos de Emergência</h2>
+                        <p class="detail-desc" data-i18n="sol3_desc">O atendimento de Pacientes em situações de emergência é uma questão de missão crítica, a Solução Eritel permite gerar diversos códigos, como código azul e amarelo, sendo uma ferramenta poderosa de resposta rápida que permite a mobilização da equipe multidisciplinar do Hospital, de forma precisa, completa, sem ambiguidade e compreendida por todos.</p>
+                        <a class="detail-cta" href="contato.html" data-i18n="detail_cta">Fale com um especialista</a>
+                    </div>
+
+                    <div class="video-card is-idle">
+                        <div class="video-frame">
+                            <video src="videos/eritel.mp4" preload="metadata" loop playsinline></video>
+                        </div>
+                        <button class="video-toggle" type="button" aria-label="Reproduzir vídeo">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button class="video-mute" type="button" aria-label="Silenciar vídeo">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="solution-detail" id="detail-laboratorio" data-cover="4" hidden>
+                <button class="back-btn" type="button" data-back>
+                    <i class="fa-solid fa-arrow-left"></i> <span data-i18n="back_solutions">Voltar para Soluções</span>
+                </button>
+
+                <div class="detail-grid">
+                    <div class="detail-text">
+                        <span class="detail-badge"><i class="fa-solid fa-vial"></i> <span data-i18n="badge4">Laboratório</span></span>
+                        <h2 class="detail-title" data-i18n="sol4_title">Solução Coleta de Laboratório</h2>
+                        <p class="detail-desc" data-i18n="sol4_desc">A demanda do laboratório para coleta e retirada de exames é algo muito crítico e dinâmico, sendo imprescindível para o bom funcionamento do hospital. A Solução de Coleta de exames de laboratório é uma ferramenta poderosa de resposta rápida que permite o controle de todos os coletores, distribuindo de forma inteligente todos os pedidos de coletas e retiradas.</p>
+                        <a class="detail-cta" href="contato.html" data-i18n="detail_cta">Fale com um especialista</a>
+                    </div>
+
+                    <div class="video-card is-idle">
+                        <div class="video-frame">
+                            <video src="videos/eritel.mp4" preload="metadata" loop playsinline></video>
+                        </div>
+                        <button class="video-toggle" type="button" aria-label="Reproduzir vídeo">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button class="video-mute" type="button" aria-label="Silenciar vídeo">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="solution-detail" id="detail-mensagens" data-cover="4" hidden>
+                <button class="back-btn" type="button" data-back>
+                    <i class="fa-solid fa-arrow-left"></i> <span data-i18n="back_solutions">Voltar para Soluções</span>
+                </button>
+
+                <div class="detail-grid">
+                    <div class="detail-text">
+                        <span class="detail-badge"><i class="fa-regular fa-comments"></i> <span data-i18n="badge5">Comunicação</span></span>
+                        <h2 class="detail-title" data-i18n="sol5_title">Plataforma de Mensagens</h2>
+                        <p class="detail-desc" data-i18n="sol5_desc">No ambiente hospitalar o foco das atividades está centrado no Paciente que demanda os mais diversos serviços durante a sua internação. As solicitações de serviços estão concentradas na Enfermagem que é a responsável pelo atendimento direto das necessidades dos Pacientes. Para solicitar os serviços o setor de enfermagem precisa ter uma ferramenta de fluxo de comunicação inteligente que possibilite se comunicar, de forma rápida e eficiente, com os outros setores do Hospital.</p>
+                        <a class="detail-cta" href="contato.html" data-i18n="detail_cta">Fale com um especialista</a>
+                    </div>
+
+                    <div class="video-card is-idle">
+                        <div class="video-frame">
+                            <video src="videos/eritel.mp4" preload="metadata" loop playsinline></video>
+                        </div>
+                        <button class="video-toggle" type="button" aria-label="Reproduzir vídeo">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button class="video-mute" type="button" aria-label="Silenciar vídeo">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="solution-detail" id="detail-nutricao" data-cover="4" hidden>
+                <button class="back-btn" type="button" data-back>
+                    <i class="fa-solid fa-arrow-left"></i> <span data-i18n="back_solutions">Voltar para Soluções</span>
+                </button>
+
+                <div class="detail-grid">
+                    <div class="detail-text">
+                        <span class="detail-badge"><i class="fa-solid fa-apple-whole"></i> <span data-i18n="badge6">Hotelaria</span></span>
+                        <h2 class="detail-title" data-i18n="sol6_title">Solicitações de Nutrição</h2>
+                        <p class="detail-desc" data-i18n="sol6_desc">Controla e organiza as solicitações de Nutrição, mudanças de dietas e solicitações de refeições, garantindo agilidade e precisão no atendimento alimentar dos pacientes internados.</p>
+                        <a class="detail-cta" href="contato.html" data-i18n="detail_cta">Fale com um especialista</a>
+                    </div>
+
+                    <div class="video-card is-idle">
+                        <div class="video-frame">
+                            <video src="videos/eritel.mp4" preload="metadata" loop playsinline></video>
+                        </div>
+                        <button class="video-toggle" type="button" aria-label="Reproduzir vídeo">
+                            <i class="fa-solid fa-play"></i>
+                        </button>
+                        <button class="video-mute" type="button" aria-label="Silenciar vídeo">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="footer">
+        <div class="footer-wrap">
+            <div class="footer-offices">
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> São Paulo</div>
+                    <a href="tel:+551123481381">(11) 2348-1381</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Rio de Janeiro</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="mailto:rio@eritel.com.br">rio@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Porto Alegre (RS, SC, PR)</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="tel:+555133628506">(51) 3362-8506</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    <span>
+                        © <span id="current-year">2026</span> Eritel.
+                        <span data-i18n="rights">Todos os direitos reservados.</span>
+                    </span>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#" data-i18n="termos">Termos de Uso</a>
+                    <a href="#" data-i18n="privacidade">Política de Privacidade</a>
+                    <a href="#" data-i18n="compliance">Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        const translations = {
+            'pt': {
+                'home': 'Home', 'empresa': 'Empresa', 'solucoes': 'Soluções', 'produtos': 'Produtos', 'servicos': 'Serviços', 'clientes': 'Clientes', 'blog': 'Blog', 'contato': 'Contato', 'plantao': 'Plantão',
+                'termos': 'Termos de Uso', 'privacidade': 'Política de Privacidade', 'compliance': 'Compliance', 'rights': 'Todos os direitos reservados.',
+                'btn_saiba_mais': 'Saiba mais',
+                'back_solutions': 'Voltar para Soluções', 'detail_cta': 'Fale com um especialista',
+                'badge1': 'Gestão', 'badge2': 'Fluxo', 'badge3': 'Crítico', 'badge4': 'Laboratório', 'badge5': 'Comunicação', 'badge6': 'Hotelaria',
+                
+                'sol1_title': 'Solução Liberação de Leitos',
+                'sol1_desc': 'A Solução Eritel de Liberação de Leitos, integrada com os principais fornecedores de Software de Gestão Hospitalar (HIS) do mercado, irá contribuir para aumentar a eficiência e os resultados do Hospital.',
+                
+                'sol2_title': 'Solução Transporte de Pacientes',
+                'sol2_desc': 'A Solução Eritel de Transporte, intra-hospitalar, de Pacientes, gerencia e controla todos os processos de deslocamentos de Pacientes, minimizando os atrasos nos procedimentos, inclusive de cirurgias, aumentando a eficiência do Hospital.',
+                
+                'sol3_title': 'Solução de Códigos de Emergência',
+                'sol3_desc': 'O atendimento de Pacientes em situações de emergência é uma questão de missão crítica, a Solução Eritel permite gerar diversos códigos, como código azul e amarelo, sendo uma ferramenta poderosa de resposta rápida que permite a mobilização da equipe multidisciplinar do Hospital, de forma precisa, completa, sem ambiguidade e compreendida por todos.',
+                
+                'sol4_title': 'Solução Coleta de Laboratório',
+                'sol4_desc': 'A demanda do laboratório para coleta e retirada de exames é algo muito crítico e dinâmico, sendo imprescindível para o bom funcionamento do hospital. A Solução de Coleta de exames de laboratório é uma ferramenta poderosa de resposta rápida que permite o controle de todos os coletores, distribuindo de forma inteligente todos os pedidos de coletas e retiradas.',
+                
+                'sol5_title': 'Plataforma de Mensagens',
+                'sol5_desc': 'No ambiente hospitalar o foco das atividades está centrado no Paciente que demanda os mais diversos serviços durante a sua internação. As solicitações de serviços estão concentradas na Enfermagem que é a responsável pelo atendimento direto das necessidades dos Pacientes. Para solicitar os serviços o setor de enfermagem precisa ter uma ferramenta de fluxo de comunicação inteligente que possibilite se comunicar, de forma rápida e eficiente, com os outros setores do Hospital.',
+                
+                'sol6_title': 'Solicitações de Nutrição',
+                'sol6_desc': 'Controla e organiza as solicitações de Nutrição, mudanças de dietas e solicitações de refeições, garantindo agilidade e precisão no atendimento alimentar dos pacientes internados.'
+            },
+            'en': {
+                'home': 'Home', 'empresa': 'Company', 'solucoes': 'Solutions', 'produtos': 'Products', 'servicos': 'Services', 'clientes': 'Clients', 'blog': 'Blog', 'contato': 'Contact', 'plantao': 'On-call',
+                'termos': 'Terms of Use', 'privacidade': 'Privacy Policy', 'compliance': 'Compliance', 'rights': 'All rights reserved.',
+                'btn_saiba_mais': 'Learn more',
+                'back_solutions': 'Back to Solutions', 'detail_cta': 'Talk to a specialist',
+                'badge1': 'Management', 'badge2': 'Flow', 'badge3': 'Critical', 'badge4': 'Laboratory', 'badge5': 'Communication', 'badge6': 'Hospitality',
+                
+                'sol1_title': 'Bed Release Solution',
+                'sol1_desc': 'Eritel\'s Bed Release Solution, integrated with the main Hospital Management Software (HIS) providers in the market, will contribute to increasing the Hospital\'s efficiency and results.',
+                
+                'sol2_title': 'Patient Transport Solution',
+                'sol2_desc': 'Eritel\'s Intra-hospital Patient Transport Solution manages and controls all patient movement processes, minimizing delays in procedures, including surgeries, increasing hospital efficiency.',
+                
+                'sol3_title': 'Emergency Codes Solution',
+                'sol3_desc': 'Attending to patients in emergency situations is a mission-critical matter. The Eritel Solution generates a variety of codes, such as code blue and code yellow, and is a powerful rapid-response tool that allows the Hospital\'s multidisciplinary team to be mobilized precisely, completely and unambiguously, and understood by all.',
+                
+                'sol4_title': 'Laboratory Collection Solution',
+                'sol4_desc': 'The laboratory\'s demand for exam collection and retrieval is very critical and dynamic, being essential for the proper functioning of the hospital. The Laboratory Exam Collection Solution is a powerful rapid-response tool that allows the control of all collectors, intelligently distributing all collection and retrieval requests.',
+                
+                'sol5_title': 'Messaging Platform',
+                'sol5_desc': 'In the hospital environment, the focus of activities is centered on the Patient who demands the most diverse services during their admission. Service requests are concentrated in Nursing, which is responsible for directly meeting the Patients\' needs. To request services, the nursing sector needs an intelligent communication flow tool that allows communicating quickly and efficiently with other hospital sectors.',
+                
+                'sol6_title': 'Nutrition Requests',
+                'sol6_desc': 'Controls and organizes Nutrition requests, diet changes, and meal requests, ensuring agility and accuracy in the dietary care of admitted patients.'
+            }
+        };
+
+        let currentLang = 'pt';
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+
+        function updateLanguage() {
+            const label = currentLang === 'pt' ? 'PT / EN' : 'EN / PT';
+            langToggleBtn.textContent = label;
+            mobileLangToggle.textContent = label;
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key] !== undefined) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+
+            document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            updateLanguage();
+            try { localStorage.setItem('eritel-lang', currentLang); } catch (err) {}
+        }
+
+        langToggleBtn.addEventListener('click', toggleLanguage);
+        mobileLangToggle.addEventListener('click', toggleLanguage);
+
+        // Mantém o idioma escolhido ao navegar entre as páginas
+        try {
+            if (localStorage.getItem('eritel-lang') === 'en') {
+                currentLang = 'en';
+                updateLanguage();
+            }
+        } catch (err) {}
+
+        // Ano do Footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // ---- Aplicação de cada solução (abre na própria página) ----
+        const SOLUTION_IDS = ['leitos', 'transporte', 'emergencia', 'laboratorio', 'mensagens', 'nutricao'];
+        const solutionsList = document.getElementById('solutions-list');
+        const solutionDetails = document.getElementById('solution-details');
+
+        function renderSolutions() {
+            const id = location.hash.replace('#', '');
+            const isOpen = SOLUTION_IDS.includes(id);
+
+            document.querySelectorAll('.solution-detail').forEach((section) => {
+                section.hidden = section.id !== 'detail-' + id;
+            });
+
+            solutionsList.hidden = isOpen;
+            solutionDetails.hidden = !isOpen;
+
+            document.querySelectorAll('.solution-detail video').forEach((video) => {
+                if (video.closest('.solution-detail').hidden) {
+                    video.pause();
+                }
+            });
+
+            window.scrollTo(0, 0);
+        }
+
+        document.querySelectorAll('[data-solution]').forEach((link) => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                location.hash = link.dataset.solution;
+            });
+        });
+
+        document.querySelectorAll('[data-back]').forEach((button) => {
+            button.addEventListener('click', () => {
+                history.pushState(null, '', location.pathname + location.search);
+                renderSolutions();
+            });
+        });
+
+        window.addEventListener('hashchange', renderSolutions);
+        renderSolutions();
+
+        // ---- Vídeo de cada solução: mesmo comportamento do vídeo da página inicial ----
+        document.querySelectorAll('.video-card').forEach((card) => {
+            const video = card.querySelector('video');
+            const btnPlay = card.querySelector('.video-toggle');
+            const btnMute = card.querySelector('.video-mute');
+            const iconPlay = btnPlay.querySelector('i');
+            const iconMute = btnMute.querySelector('i');
+            const cover = Number(card.closest('.solution-detail').dataset.cover || 4);
+            let timer = null;
+
+            video.muted = false;
+            video.volume = 1;
+
+            function goToCover() {
+                if (!card.classList.contains('is-idle')) return;
+                try { video.currentTime = cover; } catch (err) {}
+            }
+
+            if (video.readyState >= 1) {
+                goToCover();
+            } else {
+                video.addEventListener('loadedmetadata', goToCover, { once: true });
+            }
+
+            function updatePlay() {
+                iconPlay.className = video.paused ? 'fa-solid fa-play' : 'fa-solid fa-pause';
+                btnPlay.setAttribute('aria-label', video.paused ? 'Reproduzir vídeo' : 'Pausar vídeo');
+            }
+
+            function updateMute() {
+                const muted = video.muted || video.volume === 0;
+                iconMute.className = muted ? 'fa-solid fa-volume-xmark' : 'fa-solid fa-volume-high';
+                btnMute.setAttribute('aria-label', muted ? 'Ativar som' : 'Silenciar vídeo');
+            }
+
+            function hideControls() {
+                card.classList.remove('show-controls');
+            }
+
+            function showControls() {
+                card.classList.add('show-controls');
+                clearTimeout(timer);
+                if (!card.classList.contains('is-idle')) {
+                    timer = setTimeout(hideControls, 2000);
+                }
+            }
+
+            card.addEventListener('click', () => {
+                const firstClick = card.classList.contains('is-idle');
+                card.classList.remove('is-idle');
+                showControls();
+
+                if (firstClick) {
+                    video.currentTime = 0;
+                }
+
+                if (video.paused) {
+                    const promise = video.play();
+                    if (promise && promise.catch) promise.catch(() => {});
+                } else {
+                    video.pause();
+                }
+            });
+
+            btnMute.addEventListener('click', (event) => {
+                event.stopPropagation();
+                video.muted = !video.muted;
+            });
+
+            video.addEventListener('play', updatePlay);
+            video.addEventListener('pause', updatePlay);
+            video.addEventListener('volumechange', updateMute);
+            updatePlay();
+            updateMute();
+
+            card.addEventListener('pointerenter', showControls);
+            card.addEventListener('pointermove', showControls);
+            card.addEventListener('pointerdown', showControls);
+            card.addEventListener('pointerleave', (event) => {
+                if (event.pointerType === 'mouse') {
+                    clearTimeout(timer);
+                    hideControls();
+                }
+            });
+        });
+
+
+        // Menu Mobile Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eritel - Plantão</title>
+
+    <link rel="icon" type="image/x-icon" href="images/eritel.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #111827;
+            min-height: 100vh;
+            font-size: 18px;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+        button { background: none; border: none; cursor: pointer; font-family: inherit; }
+        .container { width: 100%; max-width: 1440px; margin: 0 auto; padding: 0 16px; }
+        @media (min-width: 640px) { .container { padding: 0 24px; } }
+        @media (min-width: 1024px) { .container { padding: 0 32px; } }
+
+        /* ================================
+           PLANTÃO
+        ================================= */
+        .pl-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 96px 0 56px;
+            background: linear-gradient(180deg, #f5f9ff 0%, #ffffff 100%);
+        }
+        .pl-hero::before {
+            content: "";
+            position: absolute;
+            top: -220px;
+            right: -160px;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            border: 70px solid #eaf2ff;
+        }
+        .pl-hero .container { position: relative; }
+        .pl-kicker {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #0052CC;
+            margin-bottom: 18px;
+        }
+        .pl-title {
+            font-size: clamp(48px, 6vw, 82px);
+            line-height: 0.93;
+            font-weight: 700;
+            letter-spacing: -0.07em;
+            color: #111827;
+        }
+        .pl-lead {
+            max-width: 780px;
+            margin-top: 28px;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #4b5563;
+        }
+
+        .pl-section { padding: 24px 0 96px; }
+        .pl-schedule {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+        .pl-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 22px;
+            padding: 36px;
+            box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+        }
+        .pl-day {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #6b7280;
+            margin-bottom: 14px;
+        }
+        .pl-hours {
+            font-size: 24px;
+            line-height: 1.4;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #263447;
+        }
+        .time { color: #0052CC; font-weight: 700; }
+
+        .pl-contact { margin-top: 24px; }
+        .pl-contact-title {
+            font-size: 28px;
+            line-height: 1.2;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #111827;
+            margin-bottom: 20px;
+        }
+        .pl-contact-hours {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #4b5563;
+            margin-bottom: 22px;
+        }
+        .pl-call {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px 20px;
+        }
+        .pl-call-label {
+            font-size: 18px;
+            font-weight: 600;
+            color: #263447;
+        }
+        .pl-phone {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #0052CC;
+            color: #ffffff;
+            padding: 14px 28px;
+            border-radius: 14px;
+            font-size: clamp(26px, 3.6vw, 40px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            box-shadow: 0 14px 30px rgba(0, 82, 204, 0.25);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .pl-phone:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 38px rgba(0, 82, 204, 0.32);
+        }
+        .pl-mail {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 24px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #0052CC;
+            overflow-wrap: anywhere;
+        }
+        .pl-mail:hover { text-decoration: underline; }
+
+        @media (max-width: 760px) {
+            .pl-hero { padding: 64px 0 40px; }
+            .pl-title { font-size: 44px; }
+            .pl-lead { font-size: 16px; line-height: 1.75; }
+            .pl-schedule { grid-template-columns: 1fr; }
+            .pl-card { padding: 26px 22px; }
+            .pl-hours { font-size: 20px; }
+            .pl-contact-title { font-size: 24px; }
+            .pl-contact-hours, .pl-call-label, .pl-mail { font-size: 16px; }
+            .pl-section { padding-bottom: 64px; }
+        }
+
+        /* ================================
+           BARRA DE NAVEGAÇÃO PADRÃO (igual em todas as páginas)
+        ================================= */
+        .header {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 4%;
+        }
+
+        .header-inner {
+            height: 100px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .logo-link {
+            justify-self: start;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: 135px;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 48px;
+            }
+        }
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-self: center;
+            gap: 24px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #374151;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 1200px) {
+            .desktop-nav {
+                gap: 28px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: #0052CC;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            border-radius: 3px;
+            background: #0052CC;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-active {
+            color: #0052CC !important;
+        }
+
+        .nav-link.nav-active::after {
+            transform: scaleX(1);
+        }
+
+        .header-actions {
+            display: none;
+            align-items: center;
+            justify-self: end;
+            gap: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .header-actions {
+                display: flex;
+            }
+        }
+
+        .plantao-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .plantao-btn:hover {
+            background: #DB6A0B;
+            transform: translateY(-1px);
+        }
+
+        .lang-toggle-btn {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 0;
+            font-family: inherit;
+        }
+
+        .lang-toggle-btn:hover {
+            background: #0052CC;
+            color: #ffffff;
+        }
+
+        .mobile-menu-btn-container {
+            display: flex;
+            align-items: center;
+            justify-self: end;
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            color: #374151;
+            padding: 8px;
+            font-size: 24px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn:hover {
+            color: #0052CC;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn-container {
+                display: none;
+            }
+        }
+
+        .mobile-drawer {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 8px 16px 24px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-drawer-link {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            color: #374151;
+            border: 0;
+            border-bottom: 1px solid #f9fafb;
+            background: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .mobile-drawer-link:hover {
+            color: #0052CC;
+        }
+
+        .mobile-drawer-link.nav-active {
+            border-bottom: 2px solid #0052CC;
+        }
+
+        .mobile-drawer .mobile-plantao {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            border-radius: 8px;
+            border-bottom: 0;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .mobile-drawer .mobile-plantao:hover {
+            background: #DB6A0B;
+            color: #ffffff;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-drawer-wrapper {
+                display: none;
+            }
+        }
+
+        /* ================================
+           RODAPÉ PADRÃO (igual em todas as páginas)
+        ================================= */
+        .footer {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 48px 0 32px;
+            color: #6b7280;
+        }
+
+        .footer-wrap {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .footer-wrap {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-wrap {
+                padding: 0 32px;
+            }
+        }
+
+        .footer-offices {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            padding-bottom: 32px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .footer-office {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 16px;
+            line-height: 1.5;
+            min-width: 0;
+        }
+
+        .footer-office-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #374151;
+            font-weight: 700;
+        }
+
+        .footer-office-name i {
+            color: #0052CC;
+            font-size: 14px;
+        }
+
+        .footer-office a {
+            color: #6b7280;
+            overflow-wrap: anywhere;
+        }
+
+        .footer-office a:hover {
+            color: #0052CC;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
+
+        .footer-copy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .footer-links a:hover {
+            color: #0052CC;
+        }
+
+        @media (max-width: 900px) {
+            .footer-offices {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-copy {
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <div class="logo-link">
+                <a href="index.html">
+                    <img src="images/eritel.png" alt="Eritel" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="nav-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="nav-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="nav-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="nav-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="nav-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="nav-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="nav-link" data-i18n="contato">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="plantao.html" class="plantao-btn"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button class="lang-toggle-btn" id="lang-toggle" type="button">PT / EN</button>
+            </div>
+
+            <div class="mobile-menu-btn-container">
+                <button
+                    class="mobile-menu-btn"
+                    id="mobile-menu-btn"
+                    type="button"
+                    aria-label="Abrir Menu"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-drawer-wrapper">
+            <div class="mobile-drawer" id="mobile-menu" style="display: none;">
+                <a href="index.html" class="mobile-drawer-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="mobile-drawer-link" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="mobile-drawer-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="mobile-drawer-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="mobile-drawer-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="mobile-drawer-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="mobile-drawer-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="mobile-drawer-link" data-i18n="contato">Contato</a>
+                <a href="plantao.html" class="mobile-drawer-link mobile-plantao"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button
+                    class="mobile-drawer-link"
+                    id="mobile-lang-toggle"
+                    type="button"
+                >
+                    PT / EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="pl-hero">
+            <div class="container">
+                <div class="pl-kicker" data-i18n="pl_kicker">Assistência Técnica</div>
+                <h1 class="pl-title" data-i18n="pl_title">Plantão</h1>
+                <p class="pl-lead" data-i18n="pl_lead">A Eritel atende solicitações de Plantão para Serviços Técnicos nos seguintes horários após o expediente:</p>
+            </div>
+        </section>
+
+        <section class="pl-section">
+            <div class="container">
+                <div class="pl-schedule">
+                    <article class="pl-card">
+                        <div class="pl-day" data-i18n="pl_day1">De Segunda a Sexta</div>
+                        <p class="pl-hours" data-i18n-html="pl_hours1">das <span class="time">17:15</span> às <span class="time">21:15</span> hs</p>
+                    </article>
+                    <article class="pl-card">
+                        <div class="pl-day" data-i18n="pl_day2">Sábados, Domingos e Feriados</div>
+                        <p class="pl-hours" data-i18n-html="pl_hours2">das <span class="time">9:15</span> às <span class="time">21:15</span> hs</p>
+                    </article>
+                </div>
+
+                <article class="pl-card pl-contact">
+                    <h2 class="pl-contact-title" data-i18n="pl_contact_title">Contato do Técnico de plantão:</h2>
+                    <p class="pl-contact-hours" data-i18n-html="pl_contact_hours">Dias Úteis das <span class="time">8:15</span> às <span class="time">17:15</span></p>
+                    <div class="pl-call">
+                        <span class="pl-call-label" data-i18n="pl_call">Ligue para</span>
+                        <a class="pl-phone" href="tel:+551123481381"><i class="fa-solid fa-phone"></i> (11) 2348-1381</a>
+                    </div>
+                    <a class="pl-mail" href="mailto:suporte@eritel.com.br"><i class="fa-solid fa-envelope"></i> suporte@eritel.com.br</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-wrap">
+            <div class="footer-offices">
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> São Paulo</div>
+                    <a href="tel:+551123481381">(11) 2348-1381</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Rio de Janeiro</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="mailto:rio@eritel.com.br">rio@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Porto Alegre (RS, SC, PR)</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="tel:+555133628506">(51) 3362-8506</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    <span>
+                        © <span id="current-year">2026</span> Eritel.
+                        <span data-i18n="rights">Todos os direitos reservados.</span>
+                    </span>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#" data-i18n="termos">Termos de Uso</a>
+                    <a href="#" data-i18n="privacidade">Política de Privacidade</a>
+                    <a href="#" data-i18n="compliance">Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const translations = {
+            pt: {
+                home: 'Home', empresa: 'Empresa', solucoes: 'Soluções', produtos: 'Produtos', servicos: 'Serviços',
+                clientes: 'Clientes', blog: 'Blog', contato: 'Contato', plantao: 'Plantão',
+                pl_kicker: 'Assistência Técnica',
+                pl_title: 'Plantão',
+                pl_lead: 'A Eritel atende solicitações de Plantão para Serviços Técnicos nos seguintes horários após o expediente:',
+                pl_day1: 'De Segunda a Sexta',
+                pl_hours1: 'das <span class="time">17:15</span> às <span class="time">21:15</span> hs',
+                pl_day2: 'Sábados, Domingos e Feriados',
+                pl_hours2: 'das <span class="time">9:15</span> às <span class="time">21:15</span> hs',
+                pl_contact_title: 'Contato do Técnico de plantão:',
+                pl_contact_hours: 'Dias Úteis das <span class="time">8:15</span> às <span class="time">17:15</span>',
+                pl_call: 'Ligue para',
+                rights: 'Todos os direitos reservados.',
+                termos: 'Termos de Uso', privacidade: 'Política de Privacidade', compliance: 'Compliance'
+            },
+            en: {
+                home: 'Home', empresa: 'Company', solucoes: 'Solutions', produtos: 'Products', servicos: 'Services',
+                clientes: 'Clients', blog: 'Blog', contato: 'Contact', plantao: 'On-call',
+                pl_kicker: 'Technical Support',
+                pl_title: 'On-call',
+                pl_lead: 'Eritel handles on-call requests for Technical Services during the following hours outside regular business hours:',
+                pl_day1: 'Monday to Friday',
+                pl_hours1: 'from <span class="time">17:15</span> to <span class="time">21:15</span>',
+                pl_day2: 'Saturdays, Sundays and holidays',
+                pl_hours2: 'from <span class="time">9:15</span> to <span class="time">21:15</span>',
+                pl_contact_title: 'On-call technician contact:',
+                pl_contact_hours: 'Business days, from <span class="time">8:15</span> to <span class="time">17:15</span>',
+                pl_call: 'Call',
+                rights: 'All rights reserved.',
+                termos: 'Terms of Use', privacidade: 'Privacy Policy', compliance: 'Compliance'
+            }
+        };
+
+        let currentLang = 'pt';
+        const langToggle = document.getElementById('lang-toggle');
+        const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+
+        function updateLanguage() {
+            const dictionary = translations[currentLang];
+
+            document.querySelectorAll('[data-i18n]').forEach((element) => {
+                const key = element.getAttribute('data-i18n');
+                if (dictionary[key] !== undefined) {
+                    element.textContent = dictionary[key];
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+                const key = element.getAttribute('data-i18n-html');
+                if (dictionary[key] !== undefined) {
+                    element.innerHTML = dictionary[key];
+                }
+            });
+
+            const languageLabel = currentLang === 'pt' ? 'PT / EN' : 'EN / PT';
+            langToggle.textContent = languageLabel;
+            mobileLangToggle.textContent = languageLabel;
+            document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            updateLanguage();
+            try { localStorage.setItem('eritel-lang', currentLang); } catch (err) {}
+        }
+
+        langToggle.addEventListener('click', toggleLanguage);
+        mobileLangToggle.addEventListener('click', toggleLanguage);
+
+        try {
+            if (localStorage.getItem('eritel-lang') === 'en') {
+                currentLang = 'en';
+                updateLanguage();
+            }
+        } catch (err) {}
+
+        const mobileButton = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileButton.addEventListener('click', () => {
+            const isOpen = mobileMenu.style.display === 'flex';
+            mobileMenu.style.display = isOpen ? 'none' : 'flex';
+        });
+
+        document.querySelectorAll('.mobile-drawer-link').forEach((link) => {
+            link.addEventListener('click', () => {
+                if (link.id !== 'mobile-lang-toggle') {
+                    mobileMenu.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

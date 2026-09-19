@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eritel - Empresa</title>
+    <link rel="icon" type="image/x-icon" href="images/eritel.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root{
+            --blue:#1f6adb;
+            --blue-dark:#1f6adb;
+            --red:#E11D48;
+            --orange:#F59E0B;
+            --ink:#111827;
+            --muted:#667085;
+            --line:#e8edf3;
+            --paper:#fff;
+            --soft:#f7f9fc;
+            --radius:28px;
+        }
+
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{
+            font-family:'Inter',sans-serif;
+            background:#fff;
+            color:var(--ink);
+            font-size:18px;
+            overflow-x:hidden;
+        }
+        a{text-decoration:none;color:inherit}
+        button{font:inherit;border:0;background:none;cursor:pointer}
+        img{display:block;max-width:100%}
+
+        /* HEADER */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        /* HERO */
+        .hero{
+            position:relative;
+            min-height:100svh;
+            display:flex;
+            align-items:center;
+            overflow:hidden;
+            background:
+                radial-gradient(circle at 78% 35%, rgba(0,82,204,.09), transparent 25%),
+                linear-gradient(180deg,#fff 0%,#fff 72%,#f7f9fc 100%);
+        }
+        .hero-grid{
+            width:min(1320px,90%);
+            margin:auto;
+            display:grid;
+            grid-template-columns:1.02fr .98fr;
+            gap:70px;
+            align-items:center;
+            position:relative;
+            z-index:3;
+        }
+        .hero-copy{max-width:720px}
+        .eyebrow{
+            display:inline-flex;
+            align-items:center;
+            gap:9px;
+            font-size:12px;
+            font-weight:800;
+            letter-spacing:.16em;
+            color:var(--blue);
+            text-transform:uppercase;
+            margin-bottom:24px;
+        }
+        .eyebrow i{font-size:7px}
+        .hero h1{
+            font-size:clamp(58px,8vw,118px);
+            line-height:.88;
+            letter-spacing:-.075em;
+            font-weight:800;
+            max-width:850px;
+        }
+        .hero h1 .blue{color:var(--blue)}
+        .hero h1 .red{color:var(--red)}
+        .hero-text{
+            margin-top:34px;
+            max-width:590px;
+            font-size:clamp(17px,1.5vw,21px);
+            line-height:1.65;
+            color:var(--muted);
+        }
+        .hero-actions{
+            margin-top:38px;
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+        }
+        .btn{
+            padding:15px 20px;
+            border-radius:13px;
+            font-size:14px;
+            font-weight:700;
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            transition:.3s ease;
+        }
+        .btn-primary{background:var(--blue);color:#fff;box-shadow:0 14px 28px rgba(0,82,204,.18)}
+        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(0,82,204,.25)}
+        .btn-secondary{background:#f3f5f8;color:#344054}
+        .btn-secondary:hover{transform:translateY(-3px);background:#e9edf3}
+
+        .hero-visual{
+            position:relative;
+            min-height:620px;
+        }
+        .hero-photo{
+            position:absolute;
+            width:min(510px,80%);
+            right:5%;
+            top:50%;
+            transform:translateY(-50%) rotate(3deg);
+            border-radius:34px;
+            overflow:hidden;
+            box-shadow:0 40px 90px rgba(15,23,42,.18);
+            z-index:4;
+        }
+        .hero-photo img{width:100%;height:620px;object-fit:cover}
+        .hero-card{
+            position:absolute;
+            z-index:5;
+            left:0;
+            bottom:8%;
+            width:245px;
+            padding:22px;
+            border-radius:22px;
+            background:rgba(255,255,255,.88);
+            backdrop-filter:blur(18px);
+            box-shadow:0 22px 55px rgba(15,23,42,.14);
+            border:1px solid rgba(255,255,255,.8);
+        }
+        .hero-card strong{
+            display:block;
+            font-size:34px;
+            letter-spacing:-.05em;
+            color:var(--blue);
+        }
+        .hero-card span{font-size:13px;line-height:1.45;color:var(--muted)}
+
+        .blob{
+            position:absolute;
+            pointer-events:none;
+            z-index:1;
+            will-change:transform;
+        }
+        .blob-blue{
+            width:410px;height:360px;
+            left:-180px;top:12%;
+            background:#1539c9;
+            border-radius:57% 43% 50% 50% / 42% 58% 42% 58%;
+            opacity:.95;
+        }
+        .blob-orange{
+            width:250px;height:240px;
+            right:33%;bottom:-80px;
+            background:#f6a900;
+            border-radius:48% 52% 62% 38% / 54% 43% 57% 46%;
+        }
+        .blob-red{
+            width:440px;height:390px;
+            right:-190px;bottom:-110px;
+            background:#e11d48;
+            border-radius:54% 46% 40% 60% / 48% 58% 42% 52%;
+        }
+
+        /* INTRO */
+        .intro{
+            position:relative;
+            padding:150px 0 170px;
+            background:#f7f9fc;
+            overflow:hidden;
+        }
+        .intro-inner{
+            width:min(1120px,88%);
+            margin:auto;
+            text-align:center;
+            position:relative;
+            z-index:2;
+        }
+        .section-kicker{
+            font-size:12px;
+            letter-spacing:.18em;
+            text-transform:uppercase;
+            font-weight:800;
+            color:var(--blue);
+            margin-bottom:22px;
+        }
+        .intro h2{
+            font-size:clamp(38px,5.5vw,78px);
+            line-height:.98;
+            letter-spacing:-.065em;
+            max-width:1000px;
+            margin:auto;
+        }
+        .intro h2 span{color:var(--blue)}
+        .intro p{
+            max-width:760px;
+            margin:32px auto 0;
+            color:var(--muted);
+            line-height:1.75;
+            font-size:18px;
+        }
+
+        /* STORY / PINNED */
+        .story{
+            position:relative;
+            background:#fff;
+        }
+        .story-intro{
+            width:min(1200px,90%);
+            margin:auto;
+            padding:130px 0 80px;
+        }
+        .story-heading-row{
+            display:grid;
+            grid-template-columns:minmax(0,1fr) 390px;
+            gap:70px;
+            align-items:center;
+        }
+        .story-visual{
+            position:relative;
+            width:100%;
+            height:330px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .story-visual::before{
+            content:"";
+            position:absolute;
+            width:430px;
+            height:360px;
+            right:-5px;
+            top:-5px;
+            background-color: #1f6adb;
+            border-radius:48% 52% 38% 62% / 58% 42% 58% 42%;
+            transform:rotate(-8deg) skewX(-7deg);
+            filter:blur(.2px);
+        }
+        .story-visual img{
+            position:relative;
+            z-index:2;
+            width:430px;
+            height:360px;
+            object-fit:cover;
+            object-position:center top;
+            border-radius:48% 52% 38% 62% / 58% 42% 58% 42%;
+            transform:rotate(3deg) skewY(-2deg);
+            filter:drop-shadow(0 25px 35px rgba(15,23,42,.18));
+        }
+        .story-intro h2{
+            font-size:clamp(45px,7vw,96px);
+            line-height:.93;
+            letter-spacing:-.07em;
+            max-width:850px;
+        }
+        .story-intro h2 em{
+            font-style:normal;
+            color:var(--blue);
+        }
+
+        .story-stage{
+            position:relative;
+            min-height:220vh;
+        }
+        .story-sticky{
+            position:sticky;
+            top:82px;
+            height:calc(100svh - 82px);
+            min-height:680px;
+            display:flex;
+            align-items:center;
+            overflow:hidden;
+        }
+        .story-panel{
+            width:min(1280px,90%);
+            height:min(700px,82vh);
+            margin:auto;
+            position:relative;
+            border-radius:36px;
+            overflow:hidden;
+            background:#0b1220;
+            color:white;
+            box-shadow:0 40px 100px rgba(15,23,42,.18);
+        }
+        .story-panel::after{
+            content:"";
+            position:absolute;inset:0;
+            background:linear-gradient(90deg,rgba(5,11,25,.95) 0%,rgba(5,11,25,.67) 42%,rgba(5,11,25,.08) 75%);
+            z-index:2;
+        }
+        .story-panel img{
+            position:absolute;
+            inset:0;
+            width:100%;height:100%;
+            object-fit:cover;
+            opacity:.8;
+            transform:scale(1.08);
+            will-change:transform;
+        }
+        .story-content{
+            position:absolute;
+            z-index:4;
+            left:7%;
+            top:50%;
+            transform:translateY(-50%);
+            max-width:560px;
+        }
+        .story-number{
+            font-size:13px;
+            font-weight:800;
+            letter-spacing:.18em;
+            opacity:.7;
+            margin-bottom:20px;
+        }
+        .story-content h3{
+            font-size:clamp(45px,5.5vw,82px);
+            line-height:.92;
+            letter-spacing:-.065em;
+            margin-bottom:25px;
+        }
+        .story-content h3 span{color:#5f9cff}
+        .story-content p{
+            font-size:17px;
+            line-height:1.75;
+            color:rgba(255,255,255,.78);
+            max-width:530px;
+        }
+        .story-content .mini{
+            margin-top:28px;
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+        }
+        .pill{
+            border:1px solid rgba(255,255,255,.2);
+            background:rgba(255,255,255,.08);
+            border-radius:999px;
+            padding:9px 13px;
+            font-size:11px;
+            font-weight:700;
+        }
+        .story-orb{
+            position:absolute;
+            width:300px;height:300px;
+            border-radius:50%;
+            right:7%;bottom:-80px;
+            background:rgba(0,82,204,.85);
+            filter:blur(1px);
+            z-index:3;
+            mix-blend-mode:screen;
+            transition:transform .15s linear;
+        }
+
+        .eritel-history{
+            max-width:900px;
+            margin-top:48px;
+        }
+        .eritel-history p{
+            color:var(--muted);
+            font-size:18px;
+            line-height:1.85;
+            margin-top:24px;
+        }
+        .eritel-history p:first-child{margin-top:0}
+        .eritel-history strong{font-weight:700}.brand-eritel{color:var(--blue)!important;font-weight:700}.brand-ascom{color:var(--red)!important;font-weight:700}
+
+        @media(max-width:700px){
+            .eritel-history{margin-top:35px}
+            .eritel-history p{font-size:16px;line-height:1.75}
+        }
+
+        /* SECOND STORY */
+        .ascom-section{
+            position:relative;
+            padding:180px 0 150px;
+            overflow:hidden;
+            background:#fff;
+        }
+        .ascom-grid{
+            width:min(1240px,90%);
+            margin:auto;
+            display:grid;
+            grid-template-columns:.82fr 1.18fr;
+            gap:90px;
+            align-items:center;
+        }
+        .ascom-image{
+            position:relative;
+            height:650px;
+        }
+.ascom-image-main {
+    position: absolute;
+    width: 82%;
+    height: 570px;
+    right: 0;
+    top: 0;
+    border-radius: 34px;
+    overflow: visible;
+    box-shadow: none;
+    background: transparent;
+    transform: rotate(3deg);
+}
+.ascom-image-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: transparent;
+}
+        .ascom-image:hover .ascom-image-main{transform:rotate(0deg) scale(1.015)}
+.ascom-image-main {
+    position: absolute;
+    width: 82%;
+    height: 570px;
+    right: 0;
+    top: 0;
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    background: transparent;
+    transform: rotate(3deg);
+    transition: transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+.ascom-image-small {
+    position: absolute;
+    width: 82%;
+    height: 570px;
+    left: -250px;
+    bottom: 20px;
+    border-radius: 0;
+    overflow: visible;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    z-index: 3;
+    transform: rotate(-5deg);
+    transition: transform .8s cubic-bezier(.2,.7,.2,1);
+}
+
+.ascom-image:hover .ascom-image-main {
+    transform: rotate(0deg) scale(1.015);
+}
+
+.ascom-image:hover .ascom-image-small {
+    transform: translateX(-25px) rotate(-5deg) scale(1.015);
+}
+
+        .ascom-copy .section-kicker{color:var(--red)}
+        .ascom-copy h2{
+            font-size:clamp(48px,6.5vw,88px);
+            line-height:.9;
+            letter-spacing:-.07em;
+        }
+        .ascom-copy h2 span{color:var(--red)}
+        .ascom-copy p{
+            margin-top:30px;
+            color:var(--muted);
+            line-height:1.8;
+            font-size:18px;
+        }
+        .ascom-copy p + p{margin-top:18px}
+        .ascom-highlight{
+            margin-top:34px;
+            padding:22px 0 22px 24px;
+            border-left:3px solid var(--red);
+            font-size:15px;
+            line-height:1.65;
+            color:#344054;
+        }
+        .ascom-blob{
+            position:absolute;
+            width:390px;height:350px;
+            right:-190px;
+            bottom:-100px;
+            background:var(--red);
+            border-radius:50% 50% 42% 58% / 56% 44% 56% 44%;
+            opacity:.96;
+            transform:translateY(0);
+        }
+
+        /* MARQUEE */
+        .marquee{
+            overflow:hidden;
+            border-top:1px solid var(--line);
+            border-bottom:1px solid var(--line);
+            background:#fafbfc;
+            white-space:nowrap;
+        }
+        .marquee-track{
+            display:inline-flex;
+            gap:42px;
+            padding:28px 0;
+            min-width:max-content;
+            animation:marquee 26s linear infinite;
+        }
+        .marquee-item{
+            font-size:clamp(22px,3vw,42px);
+            font-weight:700;
+            letter-spacing:-.04em;
+            color:#c8ced8;
+        }
+        .marquee-item.blue{color:var(--blue)}
+        .marquee-item.red{color:var(--red)}
+        .marquee-item.gold{color:#c99a18}
+        @keyframes marquee{
+            to{transform:translateX(-50%)}
+        }
+
+        /* CTA */
+        .cta{
+            position:relative;
+            min-height:75vh;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            overflow:hidden;
+            background:#fff;
+        }
+        .cta-inner{
+            position:relative;
+            z-index:3;
+            width:min(900px,90%);
+        }
+        .cta h2{
+            font-size:clamp(50px,8vw,108px);
+            line-height:.88;
+            letter-spacing:-.075em;
+        }
+        .cta h2 span{color:var(--blue)}
+        .cta p{
+            max-width:620px;
+            margin:30px auto;
+            color:var(--muted);
+            line-height:1.7;
+        }
+        .cta-orb{
+            position:absolute;
+            border-radius:50%;
+            filter:blur(0);
+            will-change:transform;
+        }
+        .cta-orb.one{width:270px;height:250px;background:#1539c9;left:-100px;top:15%}
+        .cta-orb.two{width:220px;height:210px;background:#f59e0b;right:12%;top:7%}
+        .cta-orb.three{width:330px;height:290px;background:#e11d48;right:-100px;bottom:-80px}
+
+        /* FOOTER */
+        
+        
+        
+        
+        
+
+        /* REVEAL */
+        .reveal{
+            opacity:0;
+            transform:translateY(45px);
+            transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);
+        }
+        .reveal.visible{opacity:1;transform:none}
+        .reveal-left{opacity:0;transform:translateX(-55px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+        .reveal-left.visible{opacity:1;transform:none}
+        .reveal-right{opacity:0;transform:translateX(55px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+        .reveal-right.visible{opacity:1;transform:none}
+
+        /* MOBILE */
+        @media(max-width:1023px){
+            
+            
+            .hero-grid{grid-template-columns:1fr;gap:35px;padding-top:110px}
+            .hero-copy{max-width:760px}
+            .hero-visual{min-height:520px}
+            .hero-photo{width:min(520px,82%);right:3%}
+            .hero-card{left:4%;bottom:3%}
+            .story-sticky{top:68px;height:calc(100svh - 68px);min-height:600px}
+            .story-panel{height:76vh;min-height:530px}
+            .ascom-grid{grid-template-columns:1fr;gap:60px}
+            .ascom-image{height:550px;order:2}
+            .ascom-copy{order:1}
+            .values-grid{grid-template-columns:1fr 1fr}
+            .value:last-child{grid-column:1/-1}
+        }
+
+        @media(max-width:700px){
+            
+            
+            .hero{min-height:auto;padding:110px 0 80px}
+            .hero-grid{width:88%;padding-top:0}
+            .hero h1{font-size:clamp(53px,16vw,82px)}
+            .hero-text{font-size:16px;margin-top:25px}
+            .hero-visual{min-height:430px}
+            .hero-photo{height:430px;width:82%;right:0}
+            .hero-photo img{height:430px}
+            .hero-card{width:205px;padding:18px;bottom:0;left:0}
+            .hero-card strong{font-size:28px}
+            .blob-blue{width:270px;height:250px;left:-145px;top:15%}
+            .blob-orange{width:170px;height:160px;right:24%;bottom:-60px}
+            .blob-red{width:300px;height:270px;right:-160px;bottom:-80px}
+            .intro{padding:100px 0}
+            .intro p{font-size:16px}
+            .story-intro{padding:95px 0 55px}
+            .story-heading-row{grid-template-columns:1fr;gap:25px}
+            .story-visual{height:260px;order:2}
+            .story-visual::before{width:230px;height:190px;right:50%;transform:translateX(50%) rotate(-8deg) skewX(-7deg)}
+            .story-visual img{width:270px;height:240px;border-radius:48% 52% 38% 62% / 58% 42% 58% 42%}
+            .story-stage{min-height:185vh}
+            .story-sticky{min-height:530px}
+            .story-panel{width:90%;height:72vh;border-radius:25px}
+            .story-panel::after{background:linear-gradient(0deg,rgba(5,11,25,.92) 0%,rgba(5,11,25,.45) 65%,rgba(5,11,25,.05) 100%)}
+            .story-content{left:7%;right:7%;top:auto;bottom:9%;transform:none}
+            .story-content h3{font-size:50px}
+            .story-content p{font-size:14px;line-height:1.65}
+            .story-orb{width:170px;height:170px;right:-40px;top:10%}
+            .ascom-section{padding:100px 0}
+            .ascom-image{height:440px}
+            .ascom-image-main{width:86%;height:400px}
+            .ascom-image-small{width:145px;height:145px;bottom:0}
+            .ascom-copy p{font-size:16px}
+            .values{padding:100px 0}
+            .values-head{display:block;margin-bottom:45px}
+            .values-head p{margin-top:25px}
+            .values-grid{grid-template-columns:1fr}
+            .value:last-child{grid-column:auto}
+            .cta{min-height:65vh}
+            
+            
+        }
+
+        @media(prefers-reduced-motion:reduce){
+            html{scroll-behavior:auto}
+            *,*::before,*::after{
+                animation-duration:.01ms!important;
+                animation-iteration-count:1!important;
+                transition-duration:.01ms!important;
+            }
+        }
+        /* BARRA E RODAPÉ PADRÃO DA PÁGINA PRINCIPAL */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        /* MENU MOBILE - mesma tipografia das outras páginas */
+
+        /* ================================
+           BARRA DE NAVEGAÇÃO PADRÃO (igual em todas as páginas)
+        ================================= */
+        .header {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid #f3f4f6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 4%;
+        }
+
+        .header-inner {
+            height: 100px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .logo-link {
+            justify-self: start;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 32px;
+            width: 135px;
+            object-fit: contain;
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 48px;
+            }
+        }
+
+        .desktop-nav {
+            display: none;
+            align-items: center;
+            justify-self: center;
+            gap: 24px;
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: #374151;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 1200px) {
+            .desktop-nav {
+                gap: 28px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .desktop-nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: #0052CC;
+        }
+
+        .nav-link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 3px;
+            border-radius: 3px;
+            background: #0052CC;
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-active {
+            color: #0052CC !important;
+        }
+
+        .nav-link.nav-active::after {
+            transform: scaleX(1);
+        }
+
+        .header-actions {
+            display: none;
+            align-items: center;
+            justify-self: end;
+            gap: 12px;
+        }
+
+        @media (min-width: 1024px) {
+            .header-actions {
+                display: flex;
+            }
+        }
+
+        .plantao-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            white-space: nowrap;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .plantao-btn:hover {
+            background: #DB6A0B;
+            transform: translateY(-1px);
+        }
+
+        .lang-toggle-btn {
+            background: #f3f4f6;
+            color: #374151;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            cursor: pointer;
+            border: 0;
+            font-family: inherit;
+        }
+
+        .lang-toggle-btn:hover {
+            background: #0052CC;
+            color: #ffffff;
+        }
+
+        .mobile-menu-btn-container {
+            display: flex;
+            align-items: center;
+            justify-self: end;
+        }
+
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            color: #374151;
+            padding: 8px;
+            font-size: 24px;
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+
+        .mobile-menu-btn:hover {
+            color: #0052CC;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-menu-btn-container {
+                display: none;
+            }
+        }
+
+        .mobile-drawer {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 8px 16px 24px;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .mobile-drawer-link {
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: left;
+            color: #374151;
+            border: 0;
+            border-bottom: 1px solid #f9fafb;
+            background: none;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .mobile-drawer-link:hover {
+            color: #0052CC;
+        }
+
+        .mobile-drawer-link.nav-active {
+            border-bottom: 2px solid #0052CC;
+        }
+
+        .mobile-drawer .mobile-plantao {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #F58220;
+            color: #ffffff;
+            border-radius: 8px;
+            border-bottom: 0;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .mobile-drawer .mobile-plantao:hover {
+            background: #DB6A0B;
+            color: #ffffff;
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-drawer-wrapper {
+                display: none;
+            }
+        }
+
+        /* ================================
+           RODAPÉ PADRÃO (igual em todas as páginas)
+        ================================= */
+        .footer {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 48px 0 32px;
+            color: #6b7280;
+        }
+
+        .footer-wrap {
+            width: 100%;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .footer-wrap {
+                padding: 0 24px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-wrap {
+                padding: 0 32px;
+            }
+        }
+
+        .footer-offices {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 28px;
+            padding-bottom: 32px;
+            margin-bottom: 28px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .footer-office {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            font-size: 16px;
+            line-height: 1.5;
+            min-width: 0;
+        }
+
+        .footer-office-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #374151;
+            font-weight: 700;
+        }
+
+        .footer-office-name i {
+            color: #0052CC;
+            font-size: 14px;
+        }
+
+        .footer-office a {
+            color: #6b7280;
+            overflow-wrap: anywhere;
+        }
+
+        .footer-office a:hover {
+            color: #0052CC;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+            }
+        }
+
+        .footer-copy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 16px;
+            color: #9ca3af;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #6b7280;
+        }
+
+        .footer-links a:hover {
+            color: #0052CC;
+        }
+
+        @media (max-width: 900px) {
+            .footer-offices {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-copy {
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <div class="logo-link">
+                <a href="index.html">
+                    <img src="images/eritel.png" alt="Eritel" class="logo-img">
+                </a>
+            </div>
+
+            <nav class="desktop-nav">
+                <a href="index.html" class="nav-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="nav-link nav-active" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="nav-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="nav-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="nav-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="nav-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="nav-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="nav-link" data-i18n="contato">Contato</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="plantao.html" class="plantao-btn"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button class="lang-toggle-btn" id="lang-toggle" type="button">PT / EN</button>
+            </div>
+
+            <div class="mobile-menu-btn-container">
+                <button
+                    class="mobile-menu-btn"
+                    id="mobile-menu-btn"
+                    type="button"
+                    aria-label="Abrir Menu"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-drawer-wrapper">
+            <div class="mobile-drawer" id="mobile-menu" style="display: none;">
+                <a href="index.html" class="mobile-drawer-link" data-i18n="home">Home</a>
+                <a href="historia.html" class="mobile-drawer-link nav-active" data-i18n="empresa">Empresa</a>
+                <a href="solucoes.html" class="mobile-drawer-link" data-i18n="solucoes">Soluções</a>
+                <a href="produtos.html" class="mobile-drawer-link" data-i18n="produtos">Produtos</a>
+                <a href="servicos.html" class="mobile-drawer-link" data-i18n="servicos">Serviços</a>
+                <a href="clientes.html" class="mobile-drawer-link" data-i18n="clientes">Clientes</a>
+                <a href="blog.html" class="mobile-drawer-link" data-i18n="blog">Blog</a>
+                <a href="contato.html" class="mobile-drawer-link" data-i18n="contato">Contato</a>
+                <a href="plantao.html" class="mobile-drawer-link mobile-plantao"><i class="fa-solid fa-phone-volume"></i> <span data-i18n="plantao">Plantão</span></a>
+                <button
+                    class="mobile-drawer-link"
+                    id="mobile-lang-toggle"
+                    type="button"
+                >
+                    PT / EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+  
+
+        <!-- ERITEL -->
+        <section class="story" id="eritel">
+            <div class="story-intro">
+                <div class="section-kicker reveal" data-i18n="eritel_kicker">01 / Eritel</div>
+                <div class="story-heading-row">
+                    <h2 class="reveal" data-i18n-html="eritel_title">
+                        Experiência que
+                        <em>evolui</em>
+                        com a operação.
+                    </h2>
+
+                    <div class="story-visual reveal-right">
+                        <img src="images/k1.png" alt="Eritel" loading="lazy">
+                    </div>
+                </div>
+
+                <div class="eritel-history reveal">
+                    <p data-i18n-html="history_1">Há mais de 35 anos, a <strong class="brand-eritel">Eritel</strong> vem acumulando experiência na proposta de soluções e vem continuamente desenvolvendo aplicativos voltados à agilização do workflow operacional, incluindo procedimentos de missão crítica, estabelecendo um ambiente de maior segurança e produtividade para o segmento da Saúde.</p>
+
+                    <p data-i18n-html="history_2">A Eritel é Golden Partner da sueca <strong class="brand-ascom">Ascom Wireless Solutions</strong>.</p>
+
+                    <p data-i18n-html="history_3">Um aspecto importante das soluções oferecidas pela plataforma <strong class="brand-ascom">Ascom</strong> é a versatilidade de integração com os diversos softwares de gestão hospitalar disponíveis, o que intensifica a funcionalidade da infraestrutura existente, maximizando benefícios e retorno do investimento.</p>
+
+                    <p data-i18n-html="history_4">Aliado a isso, a <strong class="brand-eritel">Eritel</strong> mantém um corpo de profissionais de várias especialidades com larga experiência como Consultores Técnicos, Gerentes de Contas, Engenheiros, Analistas e Técnicos preparados para diagnosticar as necessidades do cliente e definir as soluções mais adequadas em cada caso.</p>
+
+                    <p data-i18n-html="history_5">No segmento hospitalar, as soluções <strong class="brand-ascom">Ascom</strong> contribuem para o atendimento das exigências dos principais órgãos certificadores como JCI, Qmentum, HIMSS e ONA.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BARRA DE MARCA -->
+        <div class="marquee">
+            <div class="marquee-track">
+                <span class="marquee-item blue" data-i18n="marquee_eritel">ERITEL</span>
+                <span class="marquee-item" data-i18n="marquee_tecnologia">TECNOLOGIA</span>
+                <span class="marquee-item red" data-i18n="marquee_ascom">ASCOM</span>
+                <span class="marquee-item" data-i18n="marquee_saude">SAÚDE</span>
+                <span class="marquee-item" data-i18n="marquee_integracao">INTEGRAÇÃO</span>
+                <span class="marquee-item gold" data-i18n="marquee_seguranca">SEGURANÇA</span>
+                <span class="marquee-item blue" data-i18n="marquee_eritel">ERITEL</span>
+                <span class="marquee-item" data-i18n="marquee_tecnologia">TECNOLOGIA</span>
+                <span class="marquee-item red" data-i18n="marquee_ascom">ASCOM</span>
+                <span class="marquee-item" data-i18n="marquee_saude">SAÚDE</span>
+                <span class="marquee-item" data-i18n="marquee_integracao">INTEGRAÇÃO</span>
+                <span class="marquee-item gold" data-i18n="marquee_seguranca">SEGURANÇA</span>
+            </div>
+        </div>
+
+        <!-- ASCOM -->
+        <section class="ascom-section" id="ascom">
+            <div class="ascom-blob" data-speed="-0.12"></div>
+
+            <div class="ascom-grid">
+                <div class="ascom-image reveal-left">
+                    <div class="ascom-image-main">
+                        <img src="images/produtos1.png" alt="Tecnologia Ascom">
+                    </div>
+                    <div class="ascom-image-small">
+                        <img src="images/produtos2.png" alt="Eritel">
+                    </div>
+                </div>
+
+                <div class="ascom-copy">
+                    <div class="section-kicker reveal" data-i18n="ascom_kicker">02 / Ascom</div>
+                    <h2 class="reveal" data-i18n-html="ascom_title">
+                        Uma parceria
+                        <span>sem fio.</span>
+                    </h2>
+
+                    <p class="reveal" data-i18n-html="ascom_p1">
+                        A Eritel é Golden Partner da sueca <strong class="brand-ascom">Ascom Wireless Solutions</strong>,
+                        empresa com foco especial no mercado Hospitalar.
+                    </p>
+
+                    <p class="reveal" data-i18n-html="ascom_p2">
+                        A <strong class="brand-ascom">Ascom</strong> desenvolve soluções inovadoras e customizadas de comunicação
+                        wireless para missão crítica, utilizando terminais de comunicação
+                        wireless e servidores dedicados com grande capacidade de integração
+                        com os principais softwares de gestão hospitalar.
+                    </p>
+
+                    <div class="ascom-highlight reveal" data-i18n="ascom_highlight">
+                        Mensagens, alarmes e localização de pessoal podem ser integrados
+                        à infraestrutura existente, independentemente da tecnologia utilizada pelo cliente.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-wrap">
+            <div class="footer-offices">
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> São Paulo</div>
+                    <a href="tel:+551123481381">(11) 2348-1381</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Rio de Janeiro</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="mailto:rio@eritel.com.br">rio@eritel.com.br</a>
+                </div>
+                <div class="footer-office">
+                    <div class="footer-office-name"><i class="fa-solid fa-location-dot"></i> Porto Alegre (RS, SC, PR)</div>
+                    <a href="tel:+555133622000">(51) 3362-2000</a>
+                    <a href="tel:+555133628506">(51) 3362-8506</a>
+                    <a href="mailto:comercial@eritel.com.br">comercial@eritel.com.br</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="footer-copy">
+                    <span>
+                        © <span id="current-year">2026</span> Eritel.
+                        <span data-i18n="rights">Todos os direitos reservados.</span>
+                    </span>
+                </div>
+
+                <div class="footer-links">
+                    <a href="#" data-i18n="termos">Termos de Uso</a>
+                    <a href="#" data-i18n="privacidade">Política de Privacidade</a>
+                    <a href="#" data-i18n="compliance">Compliance</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const header = document.getElementById('header');
+        const currentYear = document.getElementById('current-year');
+        currentYear.textContent = new Date().getFullYear();
+
+
+        /* Tradução PT / EN */
+        const translations = {
+            pt: {
+                home:'Home', empresa:'Empresa', solucoes:'Soluções', produtos:'Produtos', servicos:'Serviços', clientes:'Clientes', blog:'Blog', contato:'Contato', plantao: 'Plantão', rights: 'Todos os direitos reservados.',
+                intro_kicker:'Tecnologia que transforma operações',
+                marquee_eritel:'ERITEL', marquee_tecnologia:'TECNOLOGIA', marquee_ascom:'ASCOM', marquee_saude:'SAÚDE', marquee_integracao:'INTEGRAÇÃO', marquee_seguranca:'SEGURANÇA',
+                intro_title:'Uma história construída em <span>tecnologia</span>',
+                intro_text:'A <strong class="brand-eritel">Eritel</strong> combina experiência, desenvolvimento de aplicativos e conhecimento técnico para diagnosticar necessidades e definir soluções adequadas para cada cliente.',
+                eritel_kicker:'01 / Eritel',
+                eritel_title:'Experiência que <em>evolui</em> com a operação.',
+                history_1:'Há mais de 35 anos, a <strong class="brand-eritel">Eritel</strong> vem acumulando experiência na proposta de soluções e vem continuamente desenvolvendo aplicativos voltados à agilização do workflow operacional, incluindo procedimentos de missão crítica, estabelecendo um ambiente de maior segurança e produtividade para o segmento da Saúde.',
+                history_2:'A Eritel é Golden Partner da sueca <strong class="brand-ascom">Ascom Wireless Solutions</strong>.',
+                history_3:'Um aspecto importante das soluções oferecidas pela plataforma <strong class="brand-ascom">Ascom</strong> é a versatilidade de integração com os diversos softwares de gestão hospitalar disponíveis, o que intensifica a funcionalidade da infraestrutura existente, maximizando benefícios e retorno do investimento.',
+                history_4:'Aliado a isso, a <strong class="brand-eritel">Eritel</strong> mantém um corpo de profissionais de várias especialidades com larga experiência como Consultores Técnicos, Gerentes de Contas, Engenheiros, Analistas e Técnicos preparados para diagnosticar as necessidades do cliente e definir as soluções mais adequadas em cada caso.',
+                history_5:'No segmento hospitalar, as soluções <strong class="brand-ascom">Ascom</strong> contribuem para o atendimento das exigências dos principais órgãos certificadores como JCI, Qmentum, HIMSS e ONA.',
+                ascom_kicker:'02 / Ascom',
+                ascom_title:'Uma parceria <span>sem fio.</span>',
+                ascom_p1:'A Eritel é Golden Partner da sueca <strong class="brand-ascom">Ascom Wireless Solutions</strong>, empresa com foco especial no mercado Hospitalar.',
+                ascom_p2:'A <strong class="brand-ascom">Ascom</strong> desenvolve soluções inovadoras e customizadas de comunicação wireless para missão crítica, utilizando terminais de comunicação wireless e servidores dedicados com grande capacidade de integração com os principais softwares de gestão hospitalar.',
+                ascom_highlight:'Mensagens, alarmes e localização de pessoal podem ser integrados à infraestrutura existente, independentemente da tecnologia utilizada pelo cliente.',
+                footer_rights:'© {year} Eritel. Todos os direitos reservados.',
+                termos:'Termos de Uso', privacidade:'Política de Privacidade', compliance:'Compliance'
+            },
+            en: {
+                home:'Home', empresa:'Company', solucoes:'Solutions', produtos:'Products', servicos:'Services', clientes:'Clients', blog:'Blog', contato:'Contact', plantao: 'On-call', rights: 'All rights reserved.',
+                intro_kicker:'Technology that transforms operations',
+                marquee_eritel:'ERITEL', marquee_tecnologia:'TECHNOLOGY', marquee_ascom:'ASCOM', marquee_saude:'HEALTH', marquee_integracao:'INTEGRATION', marquee_seguranca:'SAFETY',
+                intro_title:'A history built on <span>technology</span>',
+                intro_text:'<strong class="brand-eritel">Eritel</strong> combines experience, application development and technical expertise to diagnose needs and define suitable solutions for each client.',
+                eritel_kicker:'01 / Eritel',
+                eritel_title:'Experience that <em>evolves</em> with the operation.',
+                history_1:'For more than 35 years, <strong class="brand-eritel">Eritel</strong> has accumulated experience in proposing solutions and has continuously developed applications aimed at streamlining operational workflows, including mission-critical procedures, establishing a safer and more productive environment for the Healthcare sector.',
+                history_2:'Eritel is a Golden Partner of Swedish company <strong class="brand-ascom">Ascom Wireless Solutions</strong>.',
+                history_3:'An important aspect of the solutions offered by the <strong class="brand-ascom">Ascom</strong> platform is its versatility in integrating with the various hospital management software solutions available, enhancing the functionality of the existing infrastructure while maximizing benefits and return on investment.',
+                history_4:'In addition, <strong class="brand-eritel">Eritel</strong> maintains a team of professionals from various specialties with extensive experience as Technical Consultants, Account Managers, Engineers, Analysts and Technicians prepared to diagnose client needs and define the most appropriate solutions for each case.',
+                history_5:'In the hospital sector, <strong class="brand-ascom">Ascom</strong> solutions contribute to meeting the requirements of the main certification bodies, such as JCI, Qmentum, HIMSS and ONA.',
+                ascom_kicker:'02 / Ascom',
+                ascom_title:'A <span>wireless</span> partnership.',
+                ascom_p1:'Eritel is a Golden Partner of Swedish company <strong class="brand-ascom">Ascom Wireless Solutions</strong>, with a special focus on the hospital market.',
+                ascom_p2:'<strong class="brand-ascom">Ascom</strong> develops innovative and customized wireless communication solutions for mission-critical operations, using wireless communication terminals and dedicated servers with extensive integration capabilities with the leading hospital management software solutions.',
+                ascom_highlight:'Messages, alarms and staff location can be integrated into the existing infrastructure, regardless of the technology used by the client.',
+                footer_rights:'© {year} Eritel. All rights reserved.',
+                termos:'Terms of Use', privacidade:'Privacy Policy', compliance:'Compliance'
+            }
+        };
+
+        let currentLang = 'pt';
+        const langToggle = document.getElementById('lang-toggle');
+        const mobileLangToggle = document.getElementById('mobile-lang-toggle');
+
+        function updateLanguage(){
+            const label = currentLang === 'pt' ? 'PT / EN' : 'EN / PT';
+            langToggle.textContent = label;
+            mobileLangToggle.textContent = label;
+            document.documentElement.lang = currentLang === 'pt' ? 'pt-BR' : 'en';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (translations[currentLang][key] !== undefined) {
+                    let value = translations[currentLang][key];
+                    if (key === 'footer_rights') {
+                        value = value.replace('{year}', new Date().getFullYear());
+                    }
+                    el.textContent = value;
+                }
+            });
+            document.querySelectorAll('[data-i18n-html]').forEach(el => {
+                const key = el.dataset.i18nHtml;
+                if (translations[currentLang][key] !== undefined) el.innerHTML = translations[currentLang][key];
+            });
+        }
+
+        function toggleLanguage(){
+            currentLang = currentLang === 'pt' ? 'en' : 'pt';
+            updateLanguage();
+            try { localStorage.setItem('eritel-lang', currentLang); } catch (err) {}
+        }
+
+        langToggle.addEventListener('click', toggleLanguage);
+        mobileLangToggle.addEventListener('click', toggleLanguage);
+
+        // Mantém o idioma escolhido ao navegar entre as páginas
+        try {
+            if (localStorage.getItem('eritel-lang') === 'en') {
+                currentLang = 'en';
+                updateLanguage();
+            }
+        } catch (err) {}
+
+        /* Header */
+        function updateScrollUI(){
+            const scrollTop = window.scrollY;
+            header.classList.toggle('scrolled', scrollTop > 20);
+        }
+
+        /* Elementos que entram na tela */
+        const observer = new IntersectionObserver((entries)=>{
+            entries.forEach(entry=>{
+                if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                }
+            });
+        },{threshold:.14});
+
+        document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+
+        /* Parallax suave das formas */
+        const parallaxElements = document.querySelectorAll('[data-speed]');
+        let ticking = false;
+
+        function updateParallax(){
+            const y = window.scrollY;
+
+            parallaxElements.forEach(el=>{
+                const speed = parseFloat(el.dataset.speed || 0);
+                const rect = el.getBoundingClientRect();
+                const offset = (window.innerHeight / 2 - (rect.top + rect.height / 2)) * speed;
+                el.style.transform = `translate3d(0, ${offset}px, 0)`;
+            });
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll',()=>{
+            updateScrollUI();
+            if(!ticking){
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        },{passive:true});
+
+        updateScrollUI();
+        updateParallax();
+
+        /* Menu mobile */
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click',()=>{
+            const open = mobileMenu.style.display === 'flex';
+            mobileMenu.style.display = open ? 'none' : 'flex';
+            mobileBtn.innerHTML = open
+                ? '<i class="fa-solid fa-bars"></i>'
+                : '<i class="fa-solid fa-xmark"></i>';
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link=>{
+            link.addEventListener('click',()=>{
+                mobileMenu.style.display='none';
+                mobileBtn.innerHTML='<i class="fa-solid fa-bars"></i>';
+            });
+        });
+
+    </script>
+</body>
+</html>
